@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SDC_databaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Dog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="128" />
+    <Property Name="Handler" Type="int" />
+  </EntityType>
+  <EntityType Name="Event">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EventName" Type="varchar" MaxLength="128" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="Location" Type="varchar" MaxLength="128" />
+    <Property Name="City" Type="varchar" MaxLength="128" />
+    <Property Name="State" Type="varchar" MaxLength="128" />
+    <Property Name="Zip" Type="int" />
+    <Property Name="MorningHunt" Type="bit" />
+    <Property Name="EveningHunt" Type="bit" />
+    <Property Name="BenchShow" Type="bit" />
+    <Property Name="BarkingContest" Type="bit" />
+  </EntityType>
+  <EntityType Name="Handler">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FristName" Type="varchar" MaxLength="45" />
+    <Property Name="LastName" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <Association Name="FK__Dog__Handler__182C9B23">
+    <End Role="Handler" Type="Self.Handler" Multiplicity="0..1" />
+    <End Role="Dog" Type="Self.Dog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Handler">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Dog">
+        <PropertyRef Name="Handler" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SDC_databaseModelStoreContainer">
+    <EntitySet Name="Dog" EntityType="Self.Dog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Event" EntityType="Self.Event" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Handler" EntityType="Self.Handler" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Dog__Handler__182C9B23" Association="Self.FK__Dog__Handler__182C9B23">
+      <End Role="Handler" EntitySet="Handler" />
+      <End Role="Dog" EntitySet="Dog" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

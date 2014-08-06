@@ -1,0 +1,109 @@
+/* Bootsnipp search bar */
+#custom-search-form {
+    margin: 0;
+    margin-top: 5px;
+    padding: 0;
+}
+
+    #custom-search-form .search-query {
+        padding-right: 3px;
+        padding-right: 4px \9;
+        padding-left: 3px;
+        padding-left: 4px \9;
+        /* IE7-8 doesn't have border-radius, so don't indent the padding */
+        margin-bottom: 0;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        -webkit-transition: width 0.2s ease-in-out;
+        -moz-transition: width 0.2s ease-in-out;
+        -o-transition: width 0.2s ease-in-out;
+        transition: width 0.2s ease-in-out;
+    }
+
+    #custom-search-form button {
+        border: 0;
+        background: none;
+        /** belows styles are working good */
+        padding: 2px 5px;
+        margin-top: 2px;
+        position: relative;
+        left: -28px;
+        /* IE7-8 doesn't have border-radius, so don't indent the padding */
+        margin-bottom: 0;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+    }
+/*End Bootsnip search bar */
+
+#header { /* Header of each page */
+    font-family: Times;
+}
+
+#bt-search-btn { /* green search button, index.php */
+    margin-left: 5px;
+}
+
+.btn { /* the Event, Region, and Year button */
+    margin-right: 2%;
+}
+
+.table { /* The overall tabling use */
+    margin-top: 2%;
+}
+
+.error { /* required red */
+    color: #FF0000;
+}
+
+.fa-search {
+    padding-left: 10%;
+}
+
+.sr_button {
+    padding-right: 5%;
+    padding-left: 5%;
+}
+
+.checks {
+    margin-top: 3%;
+}
+
+input {
+    display: inline;
+}
+
+.btn-info a,
+.btn-info a:hover,
+.btn-info a:active {
+    color: #FFFFFF;
+}
+
+.btn-default a,
+.btn-default a:hover,
+.btn-default a:active {
+    color: #080808;
+}
+
+button a, button a:hover, button a:active {
+    text-decoration: none;
+}
+
+.navbar-inverse {
+    background-color: #552C00;
+    border-color: #080808;
+}
+
+.fa {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.table tr:hover {
+    background-color: #ffd800 !important;
+}
+
+#top-row:hover {
+    background-color: #AA7439 !important;
+}

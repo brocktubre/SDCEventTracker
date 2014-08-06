@@ -1,0 +1,64 @@
+﻿@model IEnumerable<SDCEventTracker.Models.Event>
+
+<h2>@ViewBag.Title</h2>
+
+<button type="button" class="btn btn-info">@Html.ActionLink("Submit New Hunt", "Create")<i class="fa fa-file-text-o"></i></button>
+
+<div class="container">
+    <div class="col-md-3 col-md-offset-9">
+        <div class="input-group">
+            <input type="text" class="form-control">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button">Go!</button>
+            </span>
+        </div>
+    </div>
+</div>
+
+
+
+@*using (Html.BeginForm("Competetion", "Home", FormMethod.Get)){
+    @Html.TextBox("searchString") <input type="submit" value="Search" />
+    }*@
+
+<table class="table">
+    <tr id="top-row">
+        <th>
+            @Html.DisplayNameFor(model => model.EventName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Location)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.State)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EventName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SDC_databaseModelStoreContainer" CdmEntityContainer="SDC_databaseEntities">
+    <EntitySetMapping Name="Dogs">
+      <EntityTypeMapping TypeName="SDC_databaseModel.Dog">
+        <MappingFragment StoreEntitySet="Dog">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Handler" ColumnName="Handler" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Events">
+      <EntityTypeMapping TypeName="SDC_databaseModel.Event">
+        <MappingFragment StoreEntitySet="Event">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="EventName" ColumnName="EventName" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Zip" ColumnName="Zip" />
+          <ScalarProperty Name="MorningHunt" ColumnName="MorningHunt" />
+          <ScalarProperty Name="EveningHunt" ColumnName="EveningHunt" />
+          <ScalarProperty Name="BenchShow" ColumnName="BenchShow" />
+          <ScalarProperty Name="BarkingContest" ColumnName="BarkingContest" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Handlers">
+      <EntityTypeMapping TypeName="SDC_databaseModel.Handler">
+        <MappingFragment StoreEntitySet="Handler">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FristName" ColumnName="FristName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SDC_databaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Dog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="Handler" Type="Int32" />
+    <NavigationProperty Name="Handler1" Relationship="Self.FK__Dog__Handler__182C9B23" FromRole="Dog" ToRole="Handler" />
+  </EntityType>
+  <EntityType Name="Event">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EventName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="Location" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="State" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="Zip" Type="Int32" />
+    <Property Name="MorningHunt" Type="Boolean" />
+    <Property Name="EveningHunt" Type="Boolean" />
+    <Property Name="BenchShow" Type="Boolean" />
+    <Property Name="BarkingContest" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Handler">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FristName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Dogs" Relationship="Self.FK__Dog__Handler__182C9B23" FromRole="Handler" ToRole="Dog" />
+  </EntityType>
+  <Association Name="FK__Dog__Handler__182C9B23">
+    <End Role="Handler" Type="Self.Handler" Multiplicity="0..1" />
+    <End Role="Dog" Type="Self.Dog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Handler">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Dog">
+        <PropertyRef Name="Handler" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SDC_databaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Dogs" EntityType="Self.Dog" />
+    <EntitySet Name="Events" EntityType="Self.Event" />
+    <EntitySet Name="Handlers" EntityType="Self.Handler" />
+    <AssociationSet Name="FK__Dog__Handler__182C9B23" Association="Self.FK__Dog__Handler__182C9B23">
+      <End Role="Handler" EntitySet="Handlers" />
+      <End Role="Dog" EntitySet="Dogs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
