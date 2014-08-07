@@ -83,7 +83,7 @@ namespace SDCEventTracker.Controllers
                 if (result.Succeeded)
                 {
                     await SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Competitions", "Home");
                 }
                 else
                 {
@@ -290,7 +290,7 @@ namespace SDCEventTracker.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Competitions", "Home");
         }
 
         //
@@ -372,7 +372,7 @@ namespace SDCEventTracker.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Competitions", "Home");
             }
         }
 

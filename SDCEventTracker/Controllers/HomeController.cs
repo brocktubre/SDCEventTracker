@@ -12,9 +12,11 @@ namespace SDCEventTracker.Controllers
     {
         public SDC_databaseEntities db = new SDC_databaseEntities();
         
-
+        
         public ActionResult Competitions(string searchString)
         {
+
+            var results = from i in db.Events select i;
             ViewBag.Title = "Competitions";
             if (!String.IsNullOrEmpty(searchString))
             {
@@ -22,7 +24,7 @@ namespace SDCEventTracker.Controllers
             }
             else
             {
-               return View(db.Events.ToList());
+               return View(results.ToList());
             }
             //List<db> EventList = new List<db>;
             //var query = from item in db.Events where item.ID == 1 select item;
@@ -33,6 +35,7 @@ namespace SDCEventTracker.Controllers
             //var theEvent = query.FirstOrDefault();            
         }
 
+        [Authorize]
         [HttpGet]
         public ActionResult Create(string searchString)
         {
