@@ -107,3 +107,7 @@ button a, button a:hover, button a:active {
 #top-row:hover {
     background-color: #AA7439 !important;
 }
+
+.table tr{
+    text-transform: capitalize;
+}

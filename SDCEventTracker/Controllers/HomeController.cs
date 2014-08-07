@@ -49,7 +49,7 @@ namespace SDCEventTracker.Controllers
         {
 
             if (ModelState.IsValid && EventToCreate.State != string.Empty)
-            {  
+            {
                 db.Events.Add(@EventToCreate);
                 db.SaveChanges();
                 return RedirectToAction("Competitions");
