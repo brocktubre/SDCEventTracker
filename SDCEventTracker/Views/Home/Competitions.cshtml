@@ -2,24 +2,32 @@
 
 <h2>@ViewBag.Title</h2>
 
-<button type="button" class="btn btn-info">@Html.ActionLink("Submit New Hunt", "Create")<i class="fa fa-file-text-o"></i></button>
+<div class="alert alert-warning shadow col-md-6 ">
+
+        <div class="col-md-8">
+            <h2> Submit Hunt Here! </h2>
+        </div>
+        <div class="col-md-4">
+            <button type="button" class="btn btn-warning">@Html.ActionLink("Submit New Hunt", "Create")<i class="fa fa-file-text-o"></i></button>
+        </div>
+    </div>
+
 
 <div class="container">
     <div class="col-md-3 col-md-offset-9 col-sm-3 col-sm-offset-9">
-        <div class="input-group">
-            <input type="text" class="form-control">
-            <span class="input-group-btn">
-                <button class="btn btn-success" type="button"><i class="fa fa-search" style="color: white; padding: 3px 0;"></i></button>
-            </span>
-        </div>
+        <form method="get" action="@Url.Action("Competitions", "Home")">
+            <div class="input-group">
+
+                <input type="text" id="search" name="searchString" class="form-control">
+                <span class="input-group-btn">
+                    <button class="btn btn-success" type="submit"><i class="fa fa-search" style="color: white; padding: 3px 0;"></i></button>
+                </span>
+
+
+            </div>
+        </form>
     </div>
 </div>
-
-
-
-@*using (Html.BeginForm("Competetion", "Home", FormMethod.Get)){
-    @Html.TextBox("searchString") <input type="submit" value="Search" />
-    }*@
 
 <div class="event-table">
     <table class="table">
@@ -45,10 +53,9 @@
         {
             // Colors the past hunt grey, bold and blacks the future hunts
             var style = "color: black; font-weight: bold;";
-            if (item.Date < DateTime.Now){
-               style = "color: grey;";
-            }
-            
+            var isPast = item.Date < DateTime.Now;
+            if (isPast) { style = "color: grey;"; }
+
             <tr style="@style">
                 <td>
                     @Html.DisplayFor(modelItem => item.EventName)
@@ -68,6 +75,5 @@
             </tr>
 
         }
-
     </table>
 </div>
