@@ -16,7 +16,7 @@ namespace SDCEventTracker.Controllers
         public ActionResult Competitions(string searchString)
         {
 
-            var results = from i in db.Events select i;
+            var results = from i in db.Events orderby i.Date descending select i;
             ViewBag.Title = "Competitions";
             if (!String.IsNullOrEmpty(searchString))
             {
