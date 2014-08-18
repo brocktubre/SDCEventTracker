@@ -3,7 +3,7 @@
 <h2>@ViewBag.Title</h2>
 
 <div>
-	<hr />
+    <hr />
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.EventName)
@@ -58,7 +58,16 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.MorningHunt)
+            @{
+                if ((bool)Model.MorningHunt)
+                {
+                    <p>Yes</p>
+                }
+                else
+                {
+                    <p>No</p>
+                }
+            }
         </dd>
 
         <dt>
@@ -66,7 +75,15 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.EveningHunt)
+            @{if ((bool)Model.EveningHunt)
+            {
+                <p>Yes</p>
+            }
+            else
+            {
+                <p>No</p>
+            }
+            }
         </dd>
 
         <dt>
@@ -74,7 +91,16 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.BenchShow)
+            @{
+                if ((bool)Model.BenchShow)
+                {
+                    <p>Yes</p>
+                }
+                else
+                {
+                    <p>No</p>
+                }
+            }
         </dd>
 
         <dt>
@@ -82,12 +108,16 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.BarkingContest)
+            @{ if ((bool)Model.BarkingContest)
+             {
+                <p>Yes</p>
+             }
+             else
+             {
+                <p>No</p>
+             }
+            }
         </dd>
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

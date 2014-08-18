@@ -5,17 +5,16 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
+using System.Net; // return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
 namespace SDCEventTracker.Controllers
 {
     public class HomeController : Controller
     {
         public SDC_databaseEntities db = new SDC_databaseEntities();
-        
-        [HttpPost]
+
         public ActionResult Competitions()
         {
-
             var results = from i in db.Events orderby i.Date descending select i;
             ViewBag.Title = "Competitions";
             return View(results.ToList());
@@ -27,14 +26,16 @@ namespace SDCEventTracker.Controllers
             //var query = from item in db.Events where item.ID >= 0 select item;
             //var theEvent = query.FirstOrDefault();            
         }
-        
+
         [HttpGet]
-        public ActionResult Competitions(string searchString){
-            
+        public ActionResult Competitions(string searchString)
+        {
+
+            ViewBag.Title = "Competitions";
             var results = from i in db.Events orderby i.Date descending select i;
             if (!String.IsNullOrEmpty(searchString))
             {
-                return View(db.Events.Where(item => item.EventName.Contains(searchString)));
+                return View(db.Events.OrderByDescending(item => item.Date).Where(item => item.EventName.Contains(searchString)));
             }
             else
             {
@@ -55,7 +56,7 @@ namespace SDCEventTracker.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "EventName,Date,Location,City,State,Zip,MorningHunt,EveningHunt,BenchShow,BarkingContest")] Event EventToCreate)
         {
-
+            ViewBag.Title = "Submit New Hunt";
             if (ModelState.IsValid && EventToCreate.State != string.Empty)
             {
                 db.Events.Add(@EventToCreate);
@@ -68,10 +69,21 @@ namespace SDCEventTracker.Controllers
             }
         }
 
-        public ActionResult EventDetails()
+        [HttpGet]
+        public ActionResult EventDetails(int? id)
         {
             ViewBag.Title = "Event Details";
-            return View();
+            if(id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Event @event = db.Events.Find(id);
+            if(@event == null)
+            {
+                return HttpNotFound();
+            }
+            return View(@event);
+            
         }
     }
 }

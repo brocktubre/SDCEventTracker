@@ -10,7 +10,5 @@ $(function () {
     $("table > tbody tr:odd").css("background-color", "#D4A26A");
     $("table > tbody tr:even").css("background-color", "#FFD6AA");
     $("#top-row").css("background-color", "#AA7439");
-
- 
     
 });
