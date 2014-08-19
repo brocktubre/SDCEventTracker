@@ -49,8 +49,9 @@
                 {
                     // Colors the past hunt grey, bold and blacks the future hunts
                     var style = "color: black; font-weight: bold;";
+                    var details = "View Details";
                     var isPast = item.Date < DateTime.Now;
-                    if (isPast) { style = "color: grey;"; }
+                    if (isPast) { style = "color: grey;"; details = "View Results"; }
 
                     <tr style="@style">
                         <td>
@@ -69,7 +70,17 @@
                             @Html.DisplayFor(modelItem => item.State)
                         </td>
                         <td>
-                            <i class="fa fa-lg fa-angle-right">@Html.ActionLink("Home", "EventDetails", new { id=item.ID })</i>
+                            @{
+                                if (isPast)
+                                {
+                                    @Html.ActionLink("View Results", "EventResults", new { id = item.ID })
+                                }
+                                else
+                                {
+                                    @Html.ActionLink("View Details", "EventDetails", new { id = item.ID })
+                                }
+                            }
+
                         </td>
                     </tr>
 

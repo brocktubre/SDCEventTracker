@@ -60,13 +60,9 @@
         <dd>
             @{
                 if ((bool)Model.MorningHunt)
-                {
-                    <p>Yes</p>
-                }
+                { <p>Yes</p> }
                 else
-                {
-                    <p>No</p>
-                }
+                { <p>No</p> }
             }
         </dd>
 
@@ -75,14 +71,11 @@
         </dt>
 
         <dd>
-            @{if ((bool)Model.EveningHunt)
-            {
-                <p>Yes</p>
-            }
-            else
-            {
-                <p>No</p>
-            }
+            @{
+                if ((bool)Model.EveningHunt)
+                {  <p>Yes</p>  }
+                else
+                { <p>No</p> }
             }
         </dd>
 
@@ -93,13 +86,9 @@
         <dd>
             @{
                 if ((bool)Model.BenchShow)
-                {
-                    <p>Yes</p>
-                }
+                {  <p>Yes</p>  }
                 else
-                {
-                    <p>No</p>
-                }
+                { <p>No</p> }
             }
         </dd>
 
@@ -108,14 +97,11 @@
         </dt>
 
         <dd>
-            @{ if ((bool)Model.BarkingContest)
-             {
-                <p>Yes</p>
-             }
-             else
-             {
-                <p>No</p>
-             }
+            @{
+                if ((bool)Model.BarkingContest)
+                {  <p>Yes</p>  }
+                else
+                { <p>No</p> }
             }
         </dd>
 
