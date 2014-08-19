@@ -1,24 +1,28 @@
 ﻿@model SDCEventTracker.Models.Event
 
 <h2>@ViewBag.Title</h2>
+<hr />
+<div class="container">
+    <div class="col-md-12 text-center">
+        <h2>@Html.DisplayFor(model => model.EventName)</h2>
+    </div>
+</div>
 
 <div>
-    <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.EventName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.EventName)
-        </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.Date)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.City), @Html.DisplayNameFor(model => model.State)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City), @Html.DisplayFor(model => model.State)
         </dd>
 
         <dt>
@@ -28,42 +32,12 @@
         <dd>
             @Html.DisplayFor(model => model.Location)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.City)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.City)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.State)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.State)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Zip)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Zip)
-        </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.MorningHunt)
         </dt>
 
         <dd>
-            @{
-                if ((bool)Model.MorningHunt)
-                { <p>Yes</p> }
-                else
-                { <p>No</p> }
-            }
+            @YesNo((bool)Model.MorningHunt)
         </dd>
 
         <dt>
@@ -71,12 +45,7 @@
         </dt>
 
         <dd>
-            @{
-                if ((bool)Model.EveningHunt)
-                {  <p>Yes</p>  }
-                else
-                { <p>No</p> }
-            }
+            @YesNo((bool)Model.EveningHunt)
         </dd>
 
         <dt>
@@ -84,12 +53,7 @@
         </dt>
 
         <dd>
-            @{
-                if ((bool)Model.BenchShow)
-                {  <p>Yes</p>  }
-                else
-                { <p>No</p> }
-            }
+            @YesNo((bool)Model.BenchShow)
         </dd>
 
         <dt>
@@ -97,13 +61,20 @@
         </dt>
 
         <dd>
-            @{
-                if ((bool)Model.BarkingContest)
-                {  <p>Yes</p>  }
-                else
-                { <p>No</p> }
-            }
+            @YesNo((bool)Model.BarkingContest)
         </dd>
 
     </dl>
 </div>
+
+@* YesNo(bool) produces "Yes" or "No" wether or not  *@
+@functions{
+    public string YesNo(bool val)
+    {
+
+        if (val) { return "Yes"; }
+        else { return "No"; }
+    }
+
+}
+

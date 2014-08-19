@@ -46,3 +46,7 @@ button a, button a:hover, button a:active {
 button a:hover, button a{
     color: #FFFFFF;
 }
+
+.bold{
+    font-weight: bold;
+}
