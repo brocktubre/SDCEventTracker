@@ -36,4 +36,19 @@ CREATE TABLE Result(
 )
 
 INSERT INTO Event (EventName, Location, Date, City, State, Zip, MorningHunt, EveningHunt, BenchShow, BarkingContest) VALUES ('TN State Hunt', 'Buffalo River Mangm. Area', '02/02/1994', 'Columbia', 'Tennesse', 30678, 1, 1, 0, 1) 
-INSERT INTO Event (EventName, Location, City, State, Zip, MorningHunt, EveningHunt, BenchShow, BarkingContest) VALUES ('Franklin County Hunt', 'Ed Hardy Woods', 'Franklin', 'Tennesse', 30009, 1, 1, 0, 0)   
+INSERT INTO Event (EventName, Location, City, State, Zip, MorningHunt, EveningHunt, BenchShow, BarkingContest) VALUES ('Franklin County Hunt', 'Ed Hardy Woods', 'Franklin', 'Tennesse', 30009, 1, 1, 0, 0)
+
+CREATE TABLE Result(
+
+	ID INT PRIMARY KEY NOT NULL IDENTITY(1,1),
+	EventID INT NOT NULL,
+	EventType INT NOT NULL,
+	Place INT NOT NULL, 
+	Handler INT NOT NULL,
+	DOG INT NOT NULL
+)
+
+CREATE TABLE EventEnum(
+	ID INT PRIMARY KEY NOT NULL,
+	EventType VARCHAR(45) NOT NULL
+) 
