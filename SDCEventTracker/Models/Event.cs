@@ -6,24 +6,40 @@
 //     Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
+using System.Web.WebPages.Html;
 
 namespace SDCEventTracker.Models
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class Event
+    public class Event
     {
         public int ID { get; set; }
+        [Display(Name = "Event")]
+        [Required(ErrorMessage = "Please enter the events name.")]
         public string EventName { get; set; }
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
+        [Required(ErrorMessage = "Please enter a date.")]
         public Nullable<System.DateTime> Date { get; set; }
         public string Location { get; set; }
+        [Required(ErrorMessage = "Please enter the city.")]
         public string City { get; set; }
+        [Required(ErrorMessage = "Must select a state.")]
         public string State { get; set; }
+        [Required(ErrorMessage = "Zip is Required")]
+        [RegularExpression(@"^\d{5}(-\d{4})?$", ErrorMessage = "Invalid Zip Code")]
         public Nullable<int> Zip { get; set; }
+        [Display(Name = "Morning Hunt")]
         public Nullable<bool> MorningHunt { get; set; }
+        [Display(Name = "Evening Hunt")]
         public Nullable<bool> EveningHunt { get; set; }
+        [Display(Name = "Bench Show")]
         public Nullable<bool> BenchShow { get; set; }
+        [Display(Name = "Barking Contest")]
         public Nullable<bool> BarkingContest { get; set; }
+
     }
+
 }
