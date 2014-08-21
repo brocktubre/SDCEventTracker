@@ -54,5 +54,25 @@
       <End Role="Handler" EntitySet="Handlers" />
       <End Role="Dog" EntitySet="Dogs" />
     </AssociationSet>
+    <EntitySet Name="EventEnums" EntityType="SDC_databaseModel.EventEnum" />
+    <EntitySet Name="Results" EntityType="SDC_databaseModel.Result" />
   </EntityContainer>
+  <EntityType Name="EventEnum">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="EventType" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Result">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Event" Type="Int32" Nullable="false" />
+    <Property Name="EventType" Type="Int32" Nullable="false" />
+    <Property Name="Place" Type="Int32" Nullable="false" />
+    <Property Name="Handler" Type="Int32" Nullable="false" />
+    <Property Name="Dog" Type="Int32" Nullable="false" />
+  </EntityType>
 </Schema>

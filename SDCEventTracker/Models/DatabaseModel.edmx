@@ -29,6 +29,13 @@
           <Property Name="BenchShow" Type="bit" />
           <Property Name="BarkingContest" Type="bit" />
         </EntityType>
+        <EntityType Name="EventEnum">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="EventType" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
         <EntityType Name="Handler">
           <Key>
             <PropertyRef Name="ID" />
@@ -36,6 +43,17 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FristName" Type="varchar" MaxLength="45" />
           <Property Name="LastName" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="Result">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Event" Type="int" Nullable="false" />
+          <Property Name="EventType" Type="int" Nullable="false" />
+          <Property Name="Place" Type="int" Nullable="false" />
+          <Property Name="Handler" Type="int" Nullable="false" />
+          <Property Name="Dog" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK__Dog__Handler__182C9B23">
           <End Role="Handler" Type="Self.Handler" Multiplicity="0..1" />
@@ -52,7 +70,9 @@
         <EntityContainer Name="SDC_databaseModelStoreContainer">
           <EntitySet Name="Dog" EntityType="Self.Dog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Event" EntityType="Self.Event" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EventEnum" EntityType="Self.EventEnum" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Handler" EntityType="Self.Handler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Result" EntityType="Self.Result" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Dog__Handler__182C9B23" Association="Self.FK__Dog__Handler__182C9B23">
             <End Role="Handler" EntitySet="Handler" />
             <End Role="Dog" EntitySet="Dog" />
@@ -116,7 +136,27 @@
             <End Role="Handler" EntitySet="Handlers" />
             <End Role="Dog" EntitySet="Dogs" />
           </AssociationSet>
+          <EntitySet Name="EventEnums" EntityType="SDC_databaseModel.EventEnum" />
+          <EntitySet Name="Results" EntityType="SDC_databaseModel.Result" />
         </EntityContainer>
+        <EntityType Name="EventEnum">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="EventType" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Result">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Event" Type="Int32" Nullable="false" />
+          <Property Name="EventType" Type="Int32" Nullable="false" />
+          <Property Name="Place" Type="Int32" Nullable="false" />
+          <Property Name="Handler" Type="Int32" Nullable="false" />
+          <Property Name="Dog" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -155,6 +195,26 @@
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="FristName" ColumnName="FristName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventEnums">
+            <EntityTypeMapping TypeName="SDC_databaseModel.EventEnum">
+              <MappingFragment StoreEntitySet="EventEnum">
+                <ScalarProperty Name="EventType" ColumnName="EventType" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Results">
+            <EntityTypeMapping TypeName="SDC_databaseModel.Result">
+              <MappingFragment StoreEntitySet="Result">
+                <ScalarProperty Name="Dog" ColumnName="Dog" />
+                <ScalarProperty Name="Handler" ColumnName="Handler" />
+                <ScalarProperty Name="Place" ColumnName="Place" />
+                <ScalarProperty Name="EventType" ColumnName="EventType" />
+                <ScalarProperty Name="Event" ColumnName="Event" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

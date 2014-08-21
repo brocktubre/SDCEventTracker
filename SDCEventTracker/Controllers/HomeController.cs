@@ -13,18 +13,13 @@ namespace SDCEventTracker.Controllers
     {
         public SDC_databaseEntities db = new SDC_databaseEntities();
 
+        [HttpPost]
         public ActionResult Competitions()
         {
-            var results = from i in db.Events orderby i.Date descending select i;
             ViewBag.Title = "Competitions";
-            return View(results.ToList());
-            //List<db> EventList = new List<db>;
-            //var query = from item in db.Events where item.ID == 1 select item;
-            //var theEvent = query.FirstOrDefault();
-            //theEvent.EventName = "Shit Stain Event";
-            //db.SaveChanges(); 
-            //var query = from item in db.Events where item.ID >= 0 select item;
-            //var theEvent = query.FirstOrDefault();            
+            // results stores the linq query that produces all the Events in descending order
+            var results = from i in db.Events orderby i.Date descending select i;
+            return View(results.ToList());  
         }
 
         [HttpGet]
@@ -83,7 +78,23 @@ namespace SDCEventTracker.Controllers
                 return HttpNotFound();
             }
             return View(@event);
-            
         }
+
+        [HttpGet]
+        public ActionResult EventResults(int? id)
+        {
+            ViewBag.Title = "Event Results";
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Result @result = db.Results.Find(id);
+            if (@result == null)
+            {
+                return HttpNotFound();
+            }
+            return View(@result);
+        }
+
     }
 }

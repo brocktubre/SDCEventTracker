@@ -28,5 +28,7 @@ namespace SDCEventTracker.Models
         public virtual DbSet<Dog> Dogs { get; set; }
         public virtual DbSet<Event> Events { get; set; }
         public virtual DbSet<Handler> Handlers { get; set; }
+        public virtual DbSet<EventEnum> EventEnums { get; set; }
+        public virtual DbSet<Result> Results { get; set; }
     }
 }

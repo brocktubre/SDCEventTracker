@@ -36,5 +36,25 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="EventEnums">
+      <EntityTypeMapping TypeName="SDC_databaseModel.EventEnum">
+        <MappingFragment StoreEntitySet="EventEnum">
+          <ScalarProperty Name="EventType" ColumnName="EventType" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Results">
+      <EntityTypeMapping TypeName="SDC_databaseModel.Result">
+        <MappingFragment StoreEntitySet="Result">
+          <ScalarProperty Name="Dog" ColumnName="Dog" />
+          <ScalarProperty Name="Handler" ColumnName="Handler" />
+          <ScalarProperty Name="Place" ColumnName="Place" />
+          <ScalarProperty Name="EventType" ColumnName="EventType" />
+          <ScalarProperty Name="Event" ColumnName="Event" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

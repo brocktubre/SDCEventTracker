@@ -9,6 +9,8 @@
         <EntityTypeShape EntityType="SDC_databaseModel.Event" Width="1.5" PointX="5.625" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="SDC_databaseModel.Handler" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
         <AssociationConnector Association="SDC_databaseModel.FK__Dog__Handler__182C9B23" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SDC_databaseModel.EventEnum" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="SDC_databaseModel.Result" Width="1.5" PointX="3.5" PointY="3.375" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

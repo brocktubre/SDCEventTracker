@@ -24,6 +24,13 @@
     <Property Name="BenchShow" Type="bit" />
     <Property Name="BarkingContest" Type="bit" />
   </EntityType>
+  <EntityType Name="EventEnum">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="EventType" Type="varchar" MaxLength="45" Nullable="false" />
+  </EntityType>
   <EntityType Name="Handler">
     <Key>
       <PropertyRef Name="ID" />
@@ -31,6 +38,17 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="FristName" Type="varchar" MaxLength="45" />
     <Property Name="LastName" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="Result">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Event" Type="int" Nullable="false" />
+    <Property Name="EventType" Type="int" Nullable="false" />
+    <Property Name="Place" Type="int" Nullable="false" />
+    <Property Name="Handler" Type="int" Nullable="false" />
+    <Property Name="Dog" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="FK__Dog__Handler__182C9B23">
     <End Role="Handler" Type="Self.Handler" Multiplicity="0..1" />
@@ -47,7 +65,9 @@
   <EntityContainer Name="SDC_databaseModelStoreContainer">
     <EntitySet Name="Dog" EntityType="Self.Dog" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Event" EntityType="Self.Event" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EventEnum" EntityType="Self.EventEnum" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Handler" EntityType="Self.Handler" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Result" EntityType="Self.Result" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK__Dog__Handler__182C9B23" Association="Self.FK__Dog__Handler__182C9B23">
       <End Role="Handler" EntitySet="Handler" />
       <End Role="Dog" EntitySet="Dog" />
