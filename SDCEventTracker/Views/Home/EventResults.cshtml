@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<SDCEventTracker.Models.Result>
 
 @{
-    ViewBag.Title = "EventResults";
+    ViewBag.Title = "Event Results";
 }
 
 <h2>EventResults</h2>
@@ -11,12 +11,6 @@
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Event)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EventType)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.Place)
         </th>
@@ -32,12 +26,6 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Event)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EventType)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Place)
         </td>
         <td>
@@ -48,7 +36,6 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.ID })
         </td>
     </tr>
