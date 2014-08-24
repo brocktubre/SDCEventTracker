@@ -179,36 +179,36 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\DatabaseModel.Context.cs">
+    <Compile Include="Models\ADOEntityDataModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DatabaseModel.Context.tt</DependentUpon>
+      <DependentUpon>ADOEntityDataModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DatabaseModel.cs">
+    <Compile Include="Models\ADOEntityDataModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>ADOEntityDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DatabaseModel.Designer.cs">
+    <Compile Include="Models\ADOEntityDataModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DatabaseModel.edmx</DependentUpon>
+      <DependentUpon>ADOEntityDataModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Dog.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>ADOEntityDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Event.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>ADOEntityDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EventEnum.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>ADOEntityDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Handler.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>ADOEntityDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Result.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>ADOEntityDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -286,22 +286,22 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\DatabaseModel.edmx">
+    <EntityDeploy Include="Models\ADOEntityDataModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DatabaseModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>ADOEntityDataModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\DatabaseModel.Context.tt">
+    <Content Include="Models\ADOEntityDataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DatabaseModel.edmx</DependentUpon>
-      <LastGenOutput>DatabaseModel.Context.cs</LastGenOutput>
+      <DependentUpon>ADOEntityDataModel.edmx</DependentUpon>
+      <LastGenOutput>ADOEntityDataModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\DatabaseModel.edmx.diagram">
-      <DependentUpon>DatabaseModel.edmx</DependentUpon>
+    <Content Include="Models\ADOEntityDataModel.edmx.diagram">
+      <DependentUpon>ADOEntityDataModel.edmx</DependentUpon>
     </Content>
-    <Content Include="Models\DatabaseModel.tt">
+    <Content Include="Models\ADOEntityDataModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DatabaseModel.edmx</DependentUpon>
-      <LastGenOutput>DatabaseModel.cs</LastGenOutput>
+      <DependentUpon>ADOEntityDataModel.edmx</DependentUpon>
+      <LastGenOutput>ADOEntityDataModel.cs</LastGenOutput>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

@@ -15,10 +15,10 @@
             @Html.DisplayNameFor(model => model.Place)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Handler)
+            @Html.DisplayNameFor(model => model.HandlerID)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Dog)
+            @Html.DisplayNameFor(model => model.DogID)
         </th>
         <th></th>
     </tr>
@@ -29,10 +29,10 @@
             @Html.DisplayFor(modelItem => item.Place)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Handler)
+            @Html.DisplayFor(modelItem => item.Handler.FirstName) @Html.DisplayFor(modelItem => item.Handler.LastName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Dog)
+            @Html.DisplayFor(modelItem => item.Dog.Name)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |

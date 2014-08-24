@@ -87,11 +87,9 @@ namespace SDCEventTracker.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var results = from i in db.Results where i.Event == id select i;
+            var results = from i in db.Results where i.EventID == id select i;
             
             return View(results.ToList());
-
-
 
             //Event @event = db.Events.Find(id);
             //if (@event == null)

@@ -14,10 +14,16 @@ namespace SDCEventTracker.Models
     
     public partial class Dog
     {
+        public Dog()
+        {
+            this.Results = new HashSet<Result>();
+        }
+    
         public int ID { get; set; }
         public string Name { get; set; }
-        public Nullable<int> Handler { get; set; }
+        public Nullable<int> HandlerID { get; set; }
     
-        public virtual Handler Handler1 { get; set; }
+        public virtual Handler Handler { get; set; }
+        public virtual ICollection<Result> Results { get; set; }
     }
 }

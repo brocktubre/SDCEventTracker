@@ -6,8 +6,9 @@
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
-    <Property Name="Handler" Type="Int32" />
-    <NavigationProperty Name="Handler1" Relationship="Self.FK__Dog__Handler__182C9B23" FromRole="Dog" ToRole="Handler" />
+    <Property Name="HandlerID" Type="Int32" />
+    <NavigationProperty Name="Handler" Relationship="SDC_databaseModel.FK__Dog__Handler__182C9B231" FromRole="Dog" ToRole="Handler" />
+    <NavigationProperty Name="Results" Relationship="SDC_databaseModel.FK__Result__DogID__68487DD7" FromRole="Dog" ToRole="Result" />
   </EntityType>
   <EntityType Name="Event">
     <Key>
@@ -24,15 +25,17 @@
     <Property Name="EveningHunt" Type="Boolean" />
     <Property Name="BenchShow" Type="Boolean" />
     <Property Name="BarkingContest" Type="Boolean" />
+    <NavigationProperty Name="Results" Relationship="SDC_databaseModel.FK__Result__EventID__6383C8BA" FromRole="Event" ToRole="Result" />
   </EntityType>
   <EntityType Name="Handler">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="FristName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="FirstName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
     <Property Name="LastName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Dogs" Relationship="Self.FK__Dog__Handler__182C9B23" FromRole="Handler" ToRole="Dog" />
+    <NavigationProperty Name="Results" Relationship="SDC_databaseModel.FK__Result__HandlerID__6B24EA82" FromRole="Handler" ToRole="Result" />
   </EntityType>
   <Association Name="FK__Dog__Handler__182C9B23">
     <End Role="Handler" Type="Self.Handler" Multiplicity="0..1" />
@@ -42,7 +45,7 @@
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="Dog">
-        <PropertyRef Name="Handler" />
+        <PropertyRef Name="HandlerID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -56,6 +59,22 @@
     </AssociationSet>
     <EntitySet Name="EventEnums" EntityType="SDC_databaseModel.EventEnum" />
     <EntitySet Name="Results" EntityType="SDC_databaseModel.Result" />
+    <AssociationSet Name="FK__Dog__Handler__182C9B231" Association="SDC_databaseModel.FK__Dog__Handler__182C9B231">
+      <End Role="Handler" EntitySet="Handlers" />
+      <End Role="Dog" EntitySet="Dogs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Result__DogID__68487DD7" Association="SDC_databaseModel.FK__Result__DogID__68487DD7">
+      <End Role="Dog" EntitySet="Dogs" />
+      <End Role="Result" EntitySet="Results" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Result__EventID__6383C8BA" Association="SDC_databaseModel.FK__Result__EventID__6383C8BA">
+      <End Role="Event" EntitySet="Events" />
+      <End Role="Result" EntitySet="Results" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Result__HandlerID__6B24EA82" Association="SDC_databaseModel.FK__Result__HandlerID__6B24EA82">
+      <End Role="Handler" EntitySet="Handlers" />
+      <End Role="Result" EntitySet="Results" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="EventEnum">
     <Key>
@@ -69,10 +88,61 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Event" Type="Int32" Nullable="false" />
+    <Property Name="EventID" Type="Int32" Nullable="false" />
     <Property Name="EventType" Type="Int32" Nullable="false" />
-    <Property Name="Place" Type="Int32" Nullable="false" />
-    <Property Name="Handler" Type="Int32" Nullable="false" />
-    <Property Name="Dog" Type="Int32" Nullable="false" />
+    <Property Name="Place" Type="Int32" />
+    <Property Name="HandlerID" Type="Int32" Nullable="false" />
+    <Property Name="DogID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Dog" Relationship="SDC_databaseModel.FK__Result__DogID__68487DD7" FromRole="Result" ToRole="Dog" />
+    <NavigationProperty Name="Event" Relationship="SDC_databaseModel.FK__Result__EventID__6383C8BA" FromRole="Result" ToRole="Event" />
+    <NavigationProperty Name="Handler" Relationship="SDC_databaseModel.FK__Result__HandlerID__6B24EA82" FromRole="Result" ToRole="Handler" />
   </EntityType>
+  <Association Name="FK__Dog__Handler__182C9B231">
+    <End Type="SDC_databaseModel.Handler" Role="Handler" Multiplicity="0..1" />
+    <End Type="SDC_databaseModel.Dog" Role="Dog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Handler">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Dog">
+        <PropertyRef Name="HandlerID1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Result__DogID__68487DD7">
+    <End Type="SDC_databaseModel.Dog" Role="Dog" Multiplicity="1" />
+    <End Type="SDC_databaseModel.Result" Role="Result" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dog">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Result">
+        <PropertyRef Name="DogID1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Result__EventID__6383C8BA">
+    <End Type="SDC_databaseModel.Event" Role="Event" Multiplicity="1" />
+    <End Type="SDC_databaseModel.Result" Role="Result" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Result">
+        <PropertyRef Name="EventID1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Result__HandlerID__6B24EA82">
+    <End Type="SDC_databaseModel.Handler" Role="Handler" Multiplicity="1" />
+    <End Type="SDC_databaseModel.Result" Role="Result" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Handler">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Result">
+        <PropertyRef Name="HandlerID1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

@@ -17,12 +17,14 @@ namespace SDCEventTracker.Models
         public Handler()
         {
             this.Dogs = new HashSet<Dog>();
+            this.Results = new HashSet<Result>();
         }
     
         public int ID { get; set; }
-        public string FristName { get; set; }
+        public string FirstName { get; set; }
         public string LastName { get; set; }
     
         public virtual ICollection<Dog> Dogs { get; set; }
+        public virtual ICollection<Result> Results { get; set; }
     }
 }

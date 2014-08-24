@@ -14,8 +14,14 @@ using System.Web.WebPages.Html;
 
 namespace SDCEventTracker.Models
 {
-    public class Event
+    
+    public partial class Event
     {
+        public Event()
+        {
+            this.Results = new HashSet<Result>();
+        }
+
         public int ID { get; set; }
         [Display(Name = "Event")]
         [Required(ErrorMessage = "Please enter the events name.")]
@@ -40,6 +46,6 @@ namespace SDCEventTracker.Models
         [Display(Name = "Barking Contest")]
         public Nullable<bool> BarkingContest { get; set; }
 
+        public virtual ICollection<Result> Results { get; set; }
     }
-
 }
