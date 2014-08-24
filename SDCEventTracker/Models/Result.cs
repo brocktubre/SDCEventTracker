@@ -20,6 +20,7 @@ namespace SDCEventTracker.Models
         public int ID { get; set; }
         [Display(Name="Event's Name")]
         public int EventID { get; set; }
+        [Display(Name="Event Type")]
         public int EventType { get; set; }
         public Nullable<int> Place { get; set; }
         [Display(Name = "Handler's Name")]

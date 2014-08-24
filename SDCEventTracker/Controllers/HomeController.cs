@@ -40,7 +40,7 @@ namespace SDCEventTracker.Controllers
 
         [Authorize]
         [HttpGet]
-        public ActionResult Create(string searchString)
+        public ActionResult SubmitEvent(string searchString)
         {
             ViewBag.Title = "Submit New Hunt";
             return View();
@@ -48,7 +48,7 @@ namespace SDCEventTracker.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EventName,Date,Location,City,State,Zip,MorningHunt,EveningHunt,BenchShow,BarkingContest")] Event EventToCreate)
+        public ActionResult SubmitEvent([Bind(Include = "EventName,Date,Location,City,State,Zip,MorningHunt,EveningHunt,BenchShow,BarkingContest")] Event EventToCreate)
         {
             ViewBag.Title = "Submit New Hunt";
             if (ModelState.IsValid && EventToCreate.State != string.Empty)
@@ -87,9 +87,10 @@ namespace SDCEventTracker.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var results = from i in db.Results orderby i.Place where i.EventID == id select i ;
-            
-            return View(results.ToList());
+            var morningHuntResults = from i in db.Results orderby i.Place where i.EventID == id && i.EventEnum.ID == 1 select i; // Selects the results for EventID == id and the Morning Hunt
+            var eveningHuntResults = from i in db.Results orderby i.Place where i.EventID == id && i.EventEnum.ID == 2 select i; // Selects the results for EventID == id and Evening Hunt
+
+            return View(morningHuntResults.ToList());
         }
 
     }

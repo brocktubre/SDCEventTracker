@@ -5,8 +5,8 @@
     <div class="row">
         <div class="alert alert-warning shadow col-md-12">
             <div class="col-md-6 col-sm-6">
-                <button style="font-weight: bold;" type="button" class="btn btn-warning text-center">@Html.ActionLink("Submit Upcoming Hunt", "Create")<i class="fa fa-plus"></i></button>
-                <button style="font-weight: bold;" type="button" class="btn btn-info text-center">@Html.ActionLink("Submit Results", "Create")<i class="fa fa-file-text-o"></i></button>
+                <button style="font-weight: bold;" type="button" class="btn btn-warning text-center">@Html.ActionLink("Submit Upcoming Hunt", "SubmitEvent")<i class="fa fa-plus"></i></button>
+                <button style="font-weight: bold;" type="button" class="btn btn-info text-center">@Html.ActionLink("Submit Results", "SubmitResults")<i class="fa fa-file-text-o"></i></button>
             </div>
             <div class="col-md-6 col-sm-6">
                 <form method="get" action="@Url.Action("Competitions", "Home")">

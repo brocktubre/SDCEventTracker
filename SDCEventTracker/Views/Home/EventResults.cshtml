@@ -7,13 +7,9 @@
 <h2>EventResults</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Submit Upcoming Hunt", "SubmitEvent")
 </p>
-
-@foreach (var item in Model) { 
-    if(item.EventEnum.ID == 1 ) //Morning Hunt
-    { <h1> Morning Hunt</h1> }
-    else { <h1> Evening Hunt </h1> }
+  
 <table class="table">
     <tr id="top-row">
         <th>
@@ -51,6 +47,6 @@
         </td>
     </tr>
 }
-}
+
 
 </table>
