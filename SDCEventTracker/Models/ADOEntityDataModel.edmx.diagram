@@ -14,6 +14,7 @@
         <AssociationConnector Association="SDC_databaseModel.FK__Result__DogID__68487DD7" ManuallyRouted="false" />
         <AssociationConnector Association="SDC_databaseModel.FK__Result__EventID__6383C8BA" ManuallyRouted="false" />
         <AssociationConnector Association="SDC_databaseModel.FK__Result__HandlerID__6B24EA82" ManuallyRouted="false" />
+        <AssociationConnector Association="SDC_databaseModel.FK__Result__EventTyp__6C190EBB" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

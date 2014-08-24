@@ -9,8 +9,13 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+@foreach (var item in Model) { 
+    if(item.EventEnum.ID == 1 ) //Morning Hunt
+    { <h1> Morning Hunt</h1> }
+    else { <h1> Evening Hunt </h1> }
 <table class="table">
-    <tr>
+    <tr id="top-row">
         <th>
             @Html.DisplayNameFor(model => model.Place)
         </th>
@@ -19,6 +24,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.DogID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EventType)
         </th>
         <th></th>
     </tr>
@@ -35,10 +43,14 @@
             @Html.DisplayFor(modelItem => item.Dog.Name)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.EventEnum.EventType)
+        </td>
+        <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.ID })
         </td>
     </tr>
+}
 }
 
 </table>

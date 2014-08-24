@@ -87,23 +87,9 @@ namespace SDCEventTracker.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var results = from i in db.Results where i.EventID == id select i;
+            var results = from i in db.Results orderby i.Place where i.EventID == id select i ;
             
             return View(results.ToList());
-
-            //Event @event = db.Events.Find(id);
-            //if (@event == null)
-            //{
-                //return HttpNotFound();
-           //}
-            //return View(@event);
-            //List<db> EventList = new List<db>;
-            //var query = from item in db.Events where item.ID == 1 select item;
-            //var theEvent = query.FirstOrDefault();
-            //theEvent.EventName = "Shit Stain Event";
-            //db.SaveChanges(); 
-            //var query = from item in db.Events where item.ID >= 0 select item;
-            //var theEvent = query.FirstOrDefault(); 
         }
 
     }

@@ -12,24 +12,24 @@ using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 using System.Web.WebPages.Html;
 
-
 namespace SDCEventTracker.Models
 {
-
+    
     public partial class Result
     {
         public int ID { get; set; }
-        [Display(Name = "Event Name")]
+        [Display(Name="Event's Name")]
         public int EventID { get; set; }
         public int EventType { get; set; }
         public Nullable<int> Place { get; set; }
-        [Display(Name = "Handler Name")]
+        [Display(Name = "Handler's Name")]
         public int HandlerID { get; set; }
-        [Display(Name = "Dog Name")]
+        [Display(Name = "Dog's Name")]
         public int DogID { get; set; }
     
         public virtual Dog Dog { get; set; }
         public virtual Event Event { get; set; }
         public virtual Handler Handler { get; set; }
+        public virtual EventEnum EventEnum { get; set; }
     }
 }

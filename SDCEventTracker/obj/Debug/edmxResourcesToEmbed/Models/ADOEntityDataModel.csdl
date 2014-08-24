@@ -33,6 +33,7 @@
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" />
     <Property Name="EventType" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Results" Relationship="SDC_databaseModel.FK__Result__EventTyp__6C190EBB" FromRole="EventEnum" ToRole="Result" />
   </EntityType>
   <EntityType Name="Handler">
     <Key>
@@ -57,6 +58,7 @@
     <NavigationProperty Name="Dog" Relationship="Self.FK__Result__DogID__68487DD7" FromRole="Result" ToRole="Dog" />
     <NavigationProperty Name="Event" Relationship="Self.FK__Result__EventID__6383C8BA" FromRole="Result" ToRole="Event" />
     <NavigationProperty Name="Handler" Relationship="Self.FK__Result__HandlerID__6B24EA82" FromRole="Result" ToRole="Handler" />
+    <NavigationProperty Name="EventEnum" Relationship="SDC_databaseModel.FK__Result__EventTyp__6C190EBB" FromRole="Result" ToRole="EventEnum" />
   </EntityType>
   <Association Name="FK__Dog__Handler__182C9B23">
     <End Role="Handler" Type="Self.Handler" Multiplicity="0..1" />
@@ -128,5 +130,21 @@
       <End Role="Handler" EntitySet="Handlers" />
       <End Role="Result" EntitySet="Results" />
     </AssociationSet>
+    <AssociationSet Name="FK__Result__EventTyp__6C190EBB" Association="SDC_databaseModel.FK__Result__EventTyp__6C190EBB">
+      <End Role="EventEnum" EntitySet="EventEnums" />
+      <End Role="Result" EntitySet="Results" />
+    </AssociationSet>
   </EntityContainer>
+  <Association Name="FK__Result__EventTyp__6C190EBB">
+    <End Type="SDC_databaseModel.EventEnum" Role="EventEnum" Multiplicity="1" />
+    <End Type="SDC_databaseModel.Result" Role="Result" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EventEnum">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Result">
+        <PropertyRef Name="EventType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

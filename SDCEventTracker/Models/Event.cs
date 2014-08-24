@@ -23,8 +23,8 @@ namespace SDCEventTracker.Models
         }
 
         public int ID { get; set; }
-        [Display(Name = "Event")]
-        [Required(ErrorMessage = "Please enter the events name.")]
+        [Display(Name = "Event's Name")]
+        [Required(ErrorMessage = "Please enter the event's name.")]
         public string EventName { get; set; }
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
         [Required(ErrorMessage = "Please enter a date.")]

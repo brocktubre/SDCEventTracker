@@ -6,15 +6,26 @@
 //     Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
+using System.Web.WebPages.Html;
 
 namespace SDCEventTracker.Models
 {
-    using System;
-    using System.Collections.Generic;
     
     public partial class EventEnum
     {
+        public EventEnum()
+        {
+            this.Results = new HashSet<Result>();
+        }
+    
         public int ID { get; set; }
+        [Display(Name="Event Type")]
         public string EventType { get; set; }
+    
+        public virtual ICollection<Result> Results { get; set; }
     }
 }
