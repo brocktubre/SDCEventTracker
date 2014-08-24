@@ -33,7 +33,7 @@ button a, button a:hover, button a:active {
     background-color: #AA7439 !important;
 }
 
-.table tr {
+.table tr, #details dd{
     text-transform: capitalize;
 }
 

@@ -3,13 +3,13 @@
 <h2>@ViewBag.Title</h2>
 <hr />
 <div class="container">
-    <div class="col-md-12 text-center">
+    <div class="col-md-12 text-center" style="text-transform: capitalize;">
         <h2>@Html.DisplayFor(model => model.EventName)</h2>
     </div>
 </div>
 
 <div>
-    <dl class="dl-horizontal">
+    <dl class="dl-horizontal" id="details">
         <dt>
             @Html.DisplayNameFor(model => model.Date)
         </dt>
