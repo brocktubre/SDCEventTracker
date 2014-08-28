@@ -11,13 +11,13 @@
             <div class="col-md-6 col-sm-6">
                 <form method="get" action="@Url.Action("Competitions", "Home")">
                     <div class="input-group">
+                        <input type="search" id="search" name="searchString" class="form-control" placeholder="Search...">
                         <span class="input-group-btn">
-                            <input type="text" id="search" name="searchString" class="form-control">
                             <button class="btn btn-success" type="submit" style="border-radius: 3px;"><i class="fa fa-search" style="padding: 0 10px; color: white; padding: 3px 0;"></i></button>
                         </span>
-                    </div>
-                </form>
             </div>
+            </form>
+        </div>
         </div>
     </div>
 
@@ -71,16 +71,16 @@
                         </td>
                         <td>
                             @{
-                                if (isPast)
-                                {
-                                    @Html.ActionLink("View Results", "EventResults", new { id = item.ID })
-                                }
-                                else
-                                {
-                                    @Html.ActionLink("View Details", "EventDetails", new { id = item.ID })
-                                }
+                    if (isPast)
+                    {
+                        @Html.ActionLink("View Results", "EventResults", new { id = item.ID })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("View Details", "EventDetails", new { id = item.ID })
+                    }
                             }
-                       
+
                         </td>
                     </tr>
 
