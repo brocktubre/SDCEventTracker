@@ -9,6 +9,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.WebPages.Html;
 
@@ -27,6 +28,7 @@ namespace SDCEventTracker.Models
         [Required(ErrorMessage = "Please enter the event's name.")]
         public string EventName { get; set; }
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
+        [DateStart(ErrorMessage="Must be a future date")]
         [Required(ErrorMessage = "Please enter a date.")]
         public Nullable<System.DateTime> Date { get; set; }
         public string Location { get; set; }
@@ -47,5 +49,30 @@ namespace SDCEventTracker.Models
         public Nullable<bool> BarkingContest { get; set; }
 
         public virtual ICollection<Result> Results { get; set; }
+    }
+
+    public sealed class DateStartAttribute : ValidationAttribute
+    {
+        public override bool IsValid(object value)
+        {
+            DateTime dateStart = (DateTime)value;
+            // Meeting must start in the future time.
+            return (dateStart > DateTime.Now);
+        }
+    }
+
+    public sealed class DateEndAttribute : ValidationAttribute
+    {
+        public string DateStartProperty { get; set; }
+        public override bool IsValid(object value)
+        {
+            // Get Value of the DateStart property
+            string dateStartString = HttpContext.Current.Request[DateStartProperty];
+            DateTime dateEnd = (DateTime)value;
+            DateTime dateStart = DateTime.Parse(dateStartString);
+
+            // Meeting start time must be before the end time
+            return dateStart < dateEnd;
+        }
     }
 }

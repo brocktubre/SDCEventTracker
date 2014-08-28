@@ -1,14 +1,6 @@
 ﻿@model IEnumerable<SDCEventTracker.Models.Result>
 
-@{
-    ViewBag.Title = "Event Results";
-}
-
-<h2>EventResults</h2>
-
-<p>
-    @Html.ActionLink("Submit Upcoming Hunt", "SubmitEvent")
-</p>
+<h2>@ViewBag.Title</h2>
   
 <table class="table">
     <tr id="top-row">
@@ -36,7 +28,7 @@
             @Html.DisplayFor(modelItem => item.Handler.FirstName) @Html.DisplayFor(modelItem => item.Handler.LastName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Dog.Name)
+            @Html.DisplayFor(modelItem => item.Handler.LastName)'s @Html.DisplayFor(modelItem => item.Dog.Name)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.EventEnum.EventType)
@@ -47,6 +39,8 @@
         </td>
     </tr>
 }
-
-
 </table>
+
+<div class="col-md-2 pull-right">
+    <button type="button" class="btn btn-default">@Html.ActionLink("Back to Competitions", "Competitions")<i class="fa fa-home"></i></button>
+</div>

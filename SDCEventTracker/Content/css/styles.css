@@ -50,3 +50,5 @@ button a:hover, button a{
 .bold{
     font-weight: bold;
 }
+
+body { margin-top: 50px;}

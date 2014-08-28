@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SDC_databaseModelStoreContainer" CdmEntityContainer="SDC_databaseEntities">
+    <EntitySetMapping Name="Dogs">
+      <EntityTypeMapping TypeName="SDC_databaseModel.Dog">
+        <MappingFragment StoreEntitySet="Dog">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="HandlerID" ColumnName="HandlerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Events">
+      <EntityTypeMapping TypeName="SDC_databaseModel.Event">
+        <MappingFragment StoreEntitySet="Event">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="EventName" ColumnName="EventName" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Zip" ColumnName="Zip" />
+          <ScalarProperty Name="MorningHunt" ColumnName="MorningHunt" />
+          <ScalarProperty Name="EveningHunt" ColumnName="EveningHunt" />
+          <ScalarProperty Name="BenchShow" ColumnName="BenchShow" />
+          <ScalarProperty Name="BarkingContest" ColumnName="BarkingContest" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EventEnums">
+      <EntityTypeMapping TypeName="SDC_databaseModel.EventEnum">
+        <MappingFragment StoreEntitySet="EventEnum">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="EventType" ColumnName="EventType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Handlers">
+      <EntityTypeMapping TypeName="SDC_databaseModel.Handler">
+        <MappingFragment StoreEntitySet="Handler">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Results">
+      <EntityTypeMapping TypeName="SDC_databaseModel.Result">
+        <MappingFragment StoreEntitySet="Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="EventType" ColumnName="EventType" />
+          <ScalarProperty Name="Place" ColumnName="Place" />
+          <ScalarProperty Name="HandlerID" ColumnName="HandlerID" />
+          <ScalarProperty Name="DogID" ColumnName="DogID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

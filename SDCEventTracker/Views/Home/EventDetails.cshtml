@@ -6,65 +6,70 @@
     <div class="col-md-12 text-center" style="text-transform: capitalize;">
         <h2>@Html.DisplayFor(model => model.EventName)</h2>
     </div>
-</div>
 
-<div>
-    <dl class="dl-horizontal" id="details">
-        <dt>
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Date)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.City), @Html.DisplayNameFor(model => model.State)
-        </dt>
+    <div>
+        <dl class="dl-horizontal" id="details">
+            <dt>
+                @Html.DisplayNameFor(model => model.Date)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.City), @Html.DisplayFor(model => model.State)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Date)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.City), @Html.DisplayNameFor(model => model.State)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Location)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.City), @Html.DisplayFor(model => model.State)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Location)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.MorningHunt)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Location)
+            </dt>
 
-        <dd>
-            @YesNo((bool)Model.MorningHunt)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Location)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.MorningHunt)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EveningHunt)
-        </dt>
+            <dd>
+                @YesNo((bool)Model.MorningHunt)
+            </dd>
 
-        <dd>
-            @YesNo((bool)Model.EveningHunt)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.EveningHunt)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.BenchShow)
-        </dt>
+            <dd>
+                @YesNo((bool)Model.EveningHunt)
+            </dd>
 
-        <dd>
-            @YesNo((bool)Model.BenchShow)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.BenchShow)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.BarkingContest)
-        </dt>
+            <dd>
+                @YesNo((bool)Model.BenchShow)
+            </dd>
 
-        <dd>
-            @YesNo((bool)Model.BarkingContest)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.BarkingContest)
+            </dt>
 
-    </dl>
+            <dd>
+                @YesNo((bool)Model.BarkingContest)
+            </dd>
+
+        </dl>
+    </div>
+
+    <div class="col-md-2 pull-right">
+        <button type="button" class="btn btn-default">@Html.ActionLink("Back to Competitions", "Competitions")<i class="fa fa-home"></i></button>
+    </div>
 </div>
 
 @* YesNo(bool) produces "Yes" or "No" wether or not  *@

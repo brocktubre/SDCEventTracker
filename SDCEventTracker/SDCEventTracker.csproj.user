@@ -7,6 +7,7 @@
     <WebStackScaffolding_LayoutPageFile />
     <WebStackScaffolding_DbContextTypeFullName>SDCEventTracker.Models.SDC_databaseEntities</WebStackScaffolding_DbContextTypeFullName>
     <ProjectView>ShowAllFiles</ProjectView>
+    <NameOfLastUsedPublishProfile>brock</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>

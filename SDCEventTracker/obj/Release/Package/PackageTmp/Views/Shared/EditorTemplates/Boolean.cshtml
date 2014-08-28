@@ -1,0 +1,5 @@
+﻿<!-- Found this answer for changing the EditFor the CheckBoxes -->
+<!-- http://stackoverflow.com/questions/6849774/mvc3-creating-checkbox-for-nullable-boolean -->
+@model bool?
+
+@Html.CheckBox("", Model.GetValueOrDefault())

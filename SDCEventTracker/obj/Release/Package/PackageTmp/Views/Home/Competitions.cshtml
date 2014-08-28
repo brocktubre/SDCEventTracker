@@ -1,0 +1,91 @@
+﻿@model IEnumerable<SDCEventTracker.Models.Event>
+
+<h2>@ViewBag.Title</h2>
+<div class="container">
+    <div class="row">
+        <div class="alert alert-warning shadow col-md-12">
+            <div class="col-md-6 col-sm-6">
+                <button style="font-weight: bold;" type="button" class="btn btn-warning text-center">@Html.ActionLink("Submit Upcoming Hunt", "SubmitEvent")<i class="fa fa-plus"></i></button>
+                <button style="font-weight: bold;" type="button" class="btn btn-info text-center">@Html.ActionLink("Submit Results", "SubmitResults")<i class="fa fa-file-text-o"></i></button>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <form method="get" action="@Url.Action("Competitions", "Home")">
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <input type="text" id="search" name="searchString" class="form-control">
+                            <button class="btn btn-success" type="submit" style="border-radius: 3px;"><i class="fa fa-search" style="padding: 0 10px; color: white; padding: 3px 0;"></i></button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="event-table col-md-12">
+            <table class="table">
+                <tr id="top-row">
+                    <th>
+                        @Html.DisplayNameFor(model => model.EventName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Date)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Location)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.City)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.State)
+                    </th>
+                    <th>
+
+                    </th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    // Colors the past hunt grey, bold and blacks the future hunts
+                    var style = "color: black; font-weight: bold;";
+                    var details = "View Details";
+                    var isPast = item.Date < DateTime.Now;
+                    if (isPast) { style = "color: grey;"; details = "View Results"; }
+
+                    <tr style="@style">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EventName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Location)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.City)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.State)
+                        </td>
+                        <td>
+                            @{
+                                if (isPast)
+                                {
+                                    @Html.ActionLink("View Results", "EventResults", new { id = item.ID })
+                                }
+                                else
+                                {
+                                    @Html.ActionLink("View Details", "EventDetails", new { id = item.ID })
+                                }
+                            }
+                       
+                        </td>
+                    </tr>
+
+                }
+            </table>
+        </div>
+    </div>
+</div>

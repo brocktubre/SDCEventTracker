@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SDC_databaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Dog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="HandlerID" Type="Int32" />
+    <NavigationProperty Name="Handler" Relationship="Self.FK__Dog__Handler__182C9B23" FromRole="Dog" ToRole="Handler" />
+    <NavigationProperty Name="Results" Relationship="Self.FK__Result__DogID__68487DD7" FromRole="Dog" ToRole="Result" />
+  </EntityType>
+  <EntityType Name="Event">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EventName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="Location" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="State" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="Zip" Type="Int32" />
+    <Property Name="MorningHunt" Type="Boolean" />
+    <Property Name="EveningHunt" Type="Boolean" />
+    <Property Name="BenchShow" Type="Boolean" />
+    <Property Name="BarkingContest" Type="Boolean" />
+    <NavigationProperty Name="Results" Relationship="Self.FK__Result__EventID__6383C8BA" FromRole="Event" ToRole="Result" />
+  </EntityType>
+  <EntityType Name="EventEnum">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="EventType" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Results" Relationship="SDC_databaseModel.FK__Result__EventTyp__6C190EBB" FromRole="EventEnum" ToRole="Result" />
+  </EntityType>
+  <EntityType Name="Handler">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Dogs" Relationship="Self.FK__Dog__Handler__182C9B23" FromRole="Handler" ToRole="Dog" />
+    <NavigationProperty Name="Results" Relationship="Self.FK__Result__HandlerID__6B24EA82" FromRole="Handler" ToRole="Result" />
+  </EntityType>
+  <EntityType Name="Result">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EventID" Type="Int32" Nullable="false" />
+    <Property Name="EventType" Type="Int32" Nullable="false" />
+    <Property Name="Place" Type="Int32" />
+    <Property Name="HandlerID" Type="Int32" Nullable="false" />
+    <Property Name="DogID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Dog" Relationship="Self.FK__Result__DogID__68487DD7" FromRole="Result" ToRole="Dog" />
+    <NavigationProperty Name="Event" Relationship="Self.FK__Result__EventID__6383C8BA" FromRole="Result" ToRole="Event" />
+    <NavigationProperty Name="Handler" Relationship="Self.FK__Result__HandlerID__6B24EA82" FromRole="Result" ToRole="Handler" />
+    <NavigationProperty Name="EventEnum" Relationship="SDC_databaseModel.FK__Result__EventTyp__6C190EBB" FromRole="Result" ToRole="EventEnum" />
+  </EntityType>
+  <Association Name="FK__Dog__Handler__182C9B23">
+    <End Role="Handler" Type="Self.Handler" Multiplicity="0..1" />
+    <End Role="Dog" Type="Self.Dog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Handler">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Dog">
+        <PropertyRef Name="HandlerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Result__DogID__68487DD7">
+    <End Role="Dog" Type="Self.Dog" Multiplicity="1" />
+    <End Role="Result" Type="Self.Result" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dog">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Result">
+        <PropertyRef Name="DogID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Result__EventID__6383C8BA">
+    <End Role="Event" Type="Self.Event" Multiplicity="1" />
+    <End Role="Result" Type="Self.Result" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Result">
+        <PropertyRef Name="EventID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Result__HandlerID__6B24EA82">
+    <End Role="Handler" Type="Self.Handler" Multiplicity="1" />
+    <End Role="Result" Type="Self.Result" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Handler">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Result">
+        <PropertyRef Name="HandlerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SDC_databaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Dogs" EntityType="Self.Dog" />
+    <EntitySet Name="Events" EntityType="Self.Event" />
+    <EntitySet Name="EventEnums" EntityType="Self.EventEnum" />
+    <EntitySet Name="Handlers" EntityType="Self.Handler" />
+    <EntitySet Name="Results" EntityType="Self.Result" />
+    <AssociationSet Name="FK__Dog__Handler__182C9B23" Association="Self.FK__Dog__Handler__182C9B23">
+      <End Role="Handler" EntitySet="Handlers" />
+      <End Role="Dog" EntitySet="Dogs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Result__DogID__68487DD7" Association="Self.FK__Result__DogID__68487DD7">
+      <End Role="Dog" EntitySet="Dogs" />
+      <End Role="Result" EntitySet="Results" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Result__EventID__6383C8BA" Association="Self.FK__Result__EventID__6383C8BA">
+      <End Role="Event" EntitySet="Events" />
+      <End Role="Result" EntitySet="Results" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Result__HandlerID__6B24EA82" Association="Self.FK__Result__HandlerID__6B24EA82">
+      <End Role="Handler" EntitySet="Handlers" />
+      <End Role="Result" EntitySet="Results" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Result__EventTyp__6C190EBB" Association="SDC_databaseModel.FK__Result__EventTyp__6C190EBB">
+      <End Role="EventEnum" EntitySet="EventEnums" />
+      <End Role="Result" EntitySet="Results" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="FK__Result__EventTyp__6C190EBB">
+    <End Type="SDC_databaseModel.EventEnum" Role="EventEnum" Multiplicity="1" />
+    <End Type="SDC_databaseModel.Result" Role="Result" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EventEnum">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Result">
+        <PropertyRef Name="EventType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

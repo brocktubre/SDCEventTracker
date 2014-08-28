@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SDC_databaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Dog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="128" />
+    <Property Name="HandlerID" Type="int" />
+  </EntityType>
+  <EntityType Name="Event">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EventName" Type="varchar" MaxLength="128" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="Location" Type="varchar" MaxLength="128" />
+    <Property Name="City" Type="varchar" MaxLength="128" />
+    <Property Name="State" Type="varchar" MaxLength="128" />
+    <Property Name="Zip" Type="int" />
+    <Property Name="MorningHunt" Type="bit" />
+    <Property Name="EveningHunt" Type="bit" />
+    <Property Name="BenchShow" Type="bit" />
+    <Property Name="BarkingContest" Type="bit" />
+  </EntityType>
+  <EntityType Name="EventEnum">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="EventType" Type="varchar" MaxLength="45" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Handler">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="45" />
+    <Property Name="LastName" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="Result">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EventID" Type="int" Nullable="false" />
+    <Property Name="EventType" Type="int" Nullable="false" />
+    <Property Name="Place" Type="int" />
+    <Property Name="HandlerID" Type="int" Nullable="false" />
+    <Property Name="DogID" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Dog__Handler__182C9B23">
+    <End Role="Handler" Type="Self.Handler" Multiplicity="0..1" />
+    <End Role="Dog" Type="Self.Dog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Handler">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Dog">
+        <PropertyRef Name="HandlerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Result__DogID__68487DD7">
+    <End Role="Dog" Type="Self.Dog" Multiplicity="1" />
+    <End Role="Result" Type="Self.Result" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dog">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Result">
+        <PropertyRef Name="DogID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Result__EventID__6383C8BA">
+    <End Role="Event" Type="Self.Event" Multiplicity="1" />
+    <End Role="Result" Type="Self.Result" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Result">
+        <PropertyRef Name="EventID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Result__EventTyp__6C190EBB">
+    <End Role="EventEnum" Type="Self.EventEnum" Multiplicity="1" />
+    <End Role="Result" Type="Self.Result" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EventEnum">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Result">
+        <PropertyRef Name="EventType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Result__HandlerID__6B24EA82">
+    <End Role="Handler" Type="Self.Handler" Multiplicity="1" />
+    <End Role="Result" Type="Self.Result" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Handler">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Result">
+        <PropertyRef Name="HandlerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SDC_databaseModelStoreContainer">
+    <EntitySet Name="Dog" EntityType="Self.Dog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Event" EntityType="Self.Event" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EventEnum" EntityType="Self.EventEnum" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Handler" EntityType="Self.Handler" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Result" EntityType="Self.Result" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Dog__Handler__182C9B23" Association="Self.FK__Dog__Handler__182C9B23">
+      <End Role="Handler" EntitySet="Handler" />
+      <End Role="Dog" EntitySet="Dog" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Result__DogID__68487DD7" Association="Self.FK__Result__DogID__68487DD7">
+      <End Role="Dog" EntitySet="Dog" />
+      <End Role="Result" EntitySet="Result" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Result__EventID__6383C8BA" Association="Self.FK__Result__EventID__6383C8BA">
+      <End Role="Event" EntitySet="Event" />
+      <End Role="Result" EntitySet="Result" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Result__EventTyp__6C190EBB" Association="Self.FK__Result__EventTyp__6C190EBB">
+      <End Role="EventEnum" EntitySet="EventEnum" />
+      <End Role="Result" EntitySet="Result" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Result__HandlerID__6B24EA82" Association="Self.FK__Result__HandlerID__6B24EA82">
+      <End Role="Handler" EntitySet="Handler" />
+      <End Role="Result" EntitySet="Result" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
