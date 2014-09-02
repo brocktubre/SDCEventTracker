@@ -29,7 +29,7 @@ button a, button a:hover, button a:active {
     background-color: #ffd800 !important;
 }
 
-#top-row:hover {
+.top-row, .table .top-row:hover {
     background-color: #AA7439 !important;
 }
 

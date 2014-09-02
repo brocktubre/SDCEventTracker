@@ -194,6 +194,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ADOEntityDataModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\AllResults.cs" />
     <Compile Include="Models\Dog.cs">
       <DependentUpon>ADOEntityDataModel.tt</DependentUpon>
     </Compile>

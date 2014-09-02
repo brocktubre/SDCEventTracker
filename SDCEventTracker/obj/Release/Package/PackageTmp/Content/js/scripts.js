@@ -9,6 +9,7 @@ http://stackoverflow.com/questions/4929538/c-sharp-mvc3-razor-alternating-items-
 $(function () {
     $("table > tbody tr:odd").css("background-color", "#D4A26A");
     $("table > tbody tr:even").css("background-color", "#FFD6AA");
+    $("table > tbody tr #first").css("background-color", "#D4A26A");
     $("#top-row").css("background-color", "#AA7439");
     
 });

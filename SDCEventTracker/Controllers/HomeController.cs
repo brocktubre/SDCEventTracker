@@ -28,13 +28,15 @@ namespace SDCEventTracker.Controllers
         public ActionResult Competitions(string searchString)
         {
             ViewBag.Title = "Competitions";
-            var allEvents = from i in db.Events orderby i.Date descending select i; 
             if (!String.IsNullOrEmpty(searchString))
             {
-                return View(db.Events.OrderByDescending(item => item.Date).Where(item => item.EventName.Contains(searchString)));
+                var searchResults = db.Events.OrderByDescending(item => item.Date).Where(item => item.EventName.Contains(searchString));
+                //if(searchResults.Count() == 0) // if the search term does not match results
+                return View(searchResults.ToList());
             }
             else
             {
+                var allEvents = from i in db.Events orderby i.Date descending select i; 
                 return View(allEvents.ToList());
             }
 
@@ -95,10 +97,17 @@ namespace SDCEventTracker.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var morningHuntResults = from i in db.Results orderby i.Place where i.EventID == id && i.EventEnum.ID == 1 select i; // Selects the results for EventID == id and the Morning Hunt
-            var eveningHuntResults = from i in db.Results orderby i.Place where i.EventID == id && i.EventEnum.ID == 2 select i; // Selects the results for EventID == id and Evening Hunt
+            ViewBag.EventEnum1 = (from i in db.EventEnums where i.ID == 1 select i.EventType).First(); // "Morning Hunt"
+            ViewBag.EventEnum2 = (from i in db.EventEnums where i.ID == 2 select i.EventType).First(); // "Evening Hunt"
+            ViewBag.EventEnum3 = (from i in db.EventEnums where i.ID == 3 select i.EventType).First(); // "Barking Contest"
+            ViewBag.EventEnum4 = (from i in db.EventEnums where i.ID == 4 select i.EventType).First(); // "Bench Show"
+            var allResults = from i in db.Results orderby i.Place where i.EventID == id select i; // Selects all results
 
-            return View(morningHuntResults.ToList());
+            //AllResults rList = new AllResults();
+            //rList.MorningHuntData = from i in db.Results orderby i.Place where i.EventID == id && i.EventEnum.ID == 1 select i; // Selects the results for EventID == id and the Morning Hunt
+            //rList.EveningHuntData = from i in db.Results orderby i.Place where i.EventID == id && i.EventEnum.ID == 2 select i; // Selects the results for EventID == id and Evening Hunt
+
+            return View(allResults.ToList());
         }
 
     }
