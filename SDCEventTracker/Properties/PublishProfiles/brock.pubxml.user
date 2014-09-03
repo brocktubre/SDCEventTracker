@@ -65,7 +65,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/06/2014 01:50:42</publishTime>
     </File>
     <File Include="bin/SDCEventTracker.dll">
-      <publishTime>08/24/2014 13:01:46</publishTime>
+      <publishTime>09/02/2014 12:23:56</publishTime>
     </File>
     <File Include="bin/System.Net.Http.Formatting.dll">
       <publishTime>08/06/2014 01:50:30</publishTime>
@@ -107,7 +107,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/06/2014 01:50:01</publishTime>
     </File>
     <File Include="Content/css/styles.css">
-      <publishTime>08/28/2014 11:12:28</publishTime>
+      <publishTime>09/01/2014 16:04:12</publishTime>
     </File>
     <File Include="Content/css/submitform.css">
       <publishTime>08/21/2014 16:06:26</publishTime>
@@ -304,6 +304,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Content/themes/base/minified/jquery.ui.tooltip.min.css">
       <publishTime>08/06/2014 01:50:04</publishTime>
     </File>
+    <File Include="Controllers/AccountController.cs">
+      <publishTime>08/07/2014 00:46:02</publishTime>
+    </File>
+    <File Include="Controllers/HomeController.cs">
+      <publishTime>09/02/2014 12:17:32</publishTime>
+    </File>
     <File Include="favicon.ico">
       <publishTime>08/06/2014 01:50:16</publishTime>
     </File>
@@ -401,13 +407,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/06/2014 01:50:07</publishTime>
     </File>
     <File Include="Views/Home/Competitions.cshtml">
-      <publishTime>08/28/2014 11:43:11</publishTime>
+      <publishTime>09/01/2014 16:12:41</publishTime>
     </File>
     <File Include="Views/Home/EventDetails.cshtml">
       <publishTime>08/24/2014 12:47:03</publishTime>
     </File>
     <File Include="Views/Home/EventResults.cshtml">
-      <publishTime>08/28/2014 10:45:56</publishTime>
+      <publishTime>09/02/2014 12:20:51</publishTime>
     </File>
     <File Include="Views/Home/SubmitEvent.cshtml">
       <publishTime>08/21/2014 10:39:28</publishTime>

@@ -12,6 +12,8 @@ namespace SDCEventTracker.Controllers
     public class HomeController : Controller
     {
         public SDC_databaseEntities db = new SDC_databaseEntities();
+        public Event objEvent = new Event();
+        public Result objResult = new Result();
 
         // Competitions View produces all the Events, past and present
         public ActionResult Competitions()
@@ -45,7 +47,7 @@ namespace SDCEventTracker.Controllers
         // HttpGet is used to submit upcoming event, date cannot be in the past
         [Authorize] //User must be logged in
         [HttpGet]
-        public ActionResult SubmitEvent(string searchString)
+        public ActionResult SubmitEvent()
         {
             ViewBag.Title = "Submit New Hunt";
             return View();
@@ -108,6 +110,31 @@ namespace SDCEventTracker.Controllers
             //rList.EveningHuntData = from i in db.Results orderby i.Place where i.EventID == id && i.EventEnum.ID == 2 select i; // Selects the results for EventID == id and Evening Hunt
 
             return View(allResults.ToList());
+        }
+
+        // User can sumbit results for past hunts
+        public ActionResult SubmitResults(int id)
+        {
+            ViewBag.Title = "Submit Results";
+            Event @event = db.Events.Find(id);
+            if (@event == null)
+            {
+                return HttpNotFound();
+            }
+
+            //var q = (from i in db.Events select i.EventName).ToList(); ViewBag.EventNames = q;
+            //q = (from i in db.Dogs select i.Name).ToList(); ViewBag.DogNames = q;
+            var q = (from i in db.EventEnums select i.EventType).ToList();
+            List<Object> eventTypeList = new List<Object>();
+            eventTypeList.AddRange(q);
+            ViewBag.EventTypes = eventTypeList;
+            //q = (from i in db.Handlers select i.FirstName).ToList(); ViewBag.HandlerName = q;
+            //var count = eventList.Count;
+            //ViewBag.EventNames = new SelectList(objEvent.EventName, "EventName", "EventName");
+            //ViewBag.EventTypes = new SelectList(objResult.EventEnum.EventType, "EventType", "EventType");
+            //ViewBag.HandlerNames = new SelectList(objResult.Handler.FirstName, "HandlerName", "HandlerName");
+            //ViewBag.HandlerNames = new SelectList(objResult.Dog.Name, "DogName", "DogName");
+            return View();
         }
 
     }

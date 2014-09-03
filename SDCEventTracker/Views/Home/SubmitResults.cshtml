@@ -1,0 +1,57 @@
+﻿@model SDCEventTracker.Models.Result
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Result</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EventType, "EventType", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor("EventTypes", (IEnumerable<SelectListItem>)ViewBag.EventTypes, new { @class="form-control" })
+                @Html.ValidationMessageFor(model => model.EventType)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Place, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Place)
+                @Html.ValidationMessageFor(model => model.Place)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.HandlerID, "HandlerID", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("HandlerID", ViewBag.HandlerNames as SelectList)
+                @Html.ValidationMessageFor(model => model.HandlerID)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DogID, "DogID", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("DogID", ViewBag.DogNames as SelectList)
+)
+                @Html.ValidationMessageFor(model => model.DogID)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

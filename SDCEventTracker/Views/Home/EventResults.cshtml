@@ -1,9 +1,11 @@
 ﻿@model IEnumerable<SDCEventTracker.Models.Result>
 
 <h2>@ViewBag.Title</h2>
-  
+
+<!-- Morning Hunt table results (1) -->
+<h3 class="text-info text-center">@ViewBag.EventEnum1</h3>
 <table class="table">
-    <tr id="top-row">
+    <tr class="top-row">
         <th>
             @Html.DisplayNameFor(model => model.Place)
         </th>
@@ -13,13 +15,11 @@
         <th>
             @Html.DisplayNameFor(model => model.DogID)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EventType)
-        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
+    if (item.EventEnum.ID == 1) { 
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Place)
@@ -31,14 +31,123 @@
             @Html.DisplayFor(modelItem => item.Handler.LastName)'s @Html.DisplayFor(modelItem => item.Dog.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.EventEnum.EventType)
-        </td>
-        <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.ID })
         </td>
     </tr>
 }
+}
+</table>
+<!-- Evening Hunt table results (2) -->
+<h3 class="text-info text-center">@ViewBag.EventEnum2</h3>
+<table class="table">
+    <tr class="top-row">
+        <th>
+            @Html.DisplayNameFor(model => model.Place)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HandlerID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DogID)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        if (item.EventEnum.ID == 2)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Place)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Handler.FirstName) @Html.DisplayFor(modelItem => item.Handler.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Handler.LastName)'s @Html.DisplayFor(modelItem => item.Dog.Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>
+            </tr>
+        }
+    }
+</table>
+<!-- Barking Contest table results (3) -->
+<h3 class="text-info text-center">@ViewBag.EventEnum3</h3>
+<table class="table">
+    <tr class="top-row">
+        <th>
+            @Html.DisplayNameFor(model => model.Place)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HandlerID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DogID)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        if (item.EventEnum.ID == 3)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Place)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Handler.FirstName) @Html.DisplayFor(modelItem => item.Handler.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Handler.LastName)'s @Html.DisplayFor(modelItem => item.Dog.Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>
+            </tr>
+        }
+    }
+</table>
+<!-- Bench Show table results (4) -->
+<h3 class="text-info text-center">@ViewBag.EventEnum4</h3>
+<table class="table">
+    <tr class="top-row">
+        <th>
+            @Html.DisplayNameFor(model => model.Place)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HandlerID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DogID)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        if (item.EventEnum.ID == 4)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Place)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Handler.FirstName) @Html.DisplayFor(modelItem => item.Handler.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Handler.LastName)'s @Html.DisplayFor(modelItem => item.Dog.Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>
+            </tr>
+        }
+    }
 </table>
 
 <div class="col-md-2 pull-right">

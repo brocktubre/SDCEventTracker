@@ -346,6 +346,7 @@
     <Content Include="Views\Shared\EditorTemplates\Boolean.cshtml" />
     <Content Include="Views\Home\EventDetails.cshtml" />
     <Content Include="Views\Home\EventResults.cshtml" />
+    <Content Include="Views\Home\SubmitResults.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
