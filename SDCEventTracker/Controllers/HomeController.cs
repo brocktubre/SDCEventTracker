@@ -38,7 +38,7 @@ namespace SDCEventTracker.Controllers
             }
             else
             {
-                var allEvents = from i in db.Events orderby i.Date descending select i; 
+                var allEvents = from i in db.Events orderby i.Date descending select i;
                 return View(allEvents.ToList());
             }
 
@@ -77,13 +77,13 @@ namespace SDCEventTracker.Controllers
         public ActionResult EventDetails(int? id)
         {
             ViewBag.Title = "Event Details";
-            if(id == null)
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             // .Find(id) finds the EventId and stores is into @event
             Event @event = db.Events.Find(id);
-            if(@event == null)
+            if (@event == null)
             {
                 return HttpNotFound();
             }
@@ -121,13 +121,14 @@ namespace SDCEventTracker.Controllers
             {
                 return HttpNotFound();
             }
+            objResult.EventID = @event.ID; // stores the id as EventID in Result
 
             //var q = (from i in db.Events select i.EventName).ToList(); ViewBag.EventNames = q;
             //q = (from i in db.Dogs select i.Name).ToList(); ViewBag.DogNames = q;
-            var q = (from i in db.EventEnums select i.EventType).ToList();
-            List<Object> eventTypeList = new List<Object>();
-            eventTypeList.AddRange(q);
-            ViewBag.EventTypes = eventTypeList;
+            //var q = (from i in db.EventEnums select i.EventType).ToList();
+            //List<SelectListItem> eventTypeList = new List<SelectListItem>();
+            //eventTypeList.AddRange((from i in db.EventEnums select i.EventType).ToList());
+            //ViewBag.EventTypes = eventTypeList;
             //q = (from i in db.Handlers select i.FirstName).ToList(); ViewBag.HandlerName = q;
             //var count = eventList.Count;
             //ViewBag.EventNames = new SelectList(objEvent.EventName, "EventName", "EventName");

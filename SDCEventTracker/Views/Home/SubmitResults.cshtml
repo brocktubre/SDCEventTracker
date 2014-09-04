@@ -14,7 +14,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.EventType, "EventType", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor("EventTypes", (IEnumerable<SelectListItem>)ViewBag.EventTypes, new { @class="form-control" })
+                @Html.DropDownListFor(model => model.EventType, ViewBag.EventTypes, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.EventType)
             </div>
         </div>

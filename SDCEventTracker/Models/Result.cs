@@ -9,6 +9,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.WebPages.Html;
@@ -34,5 +35,4 @@ namespace SDCEventTracker.Models
         public virtual Handler Handler { get; set; }
         public virtual EventEnum EventEnum { get; set; }
     }
-
 }

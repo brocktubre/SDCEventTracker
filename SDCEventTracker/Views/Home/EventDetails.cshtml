@@ -71,7 +71,7 @@
         <button type="button" class="btn btn-default">@Html.ActionLink("Back to Competitions", "Competitions")<i class="fa fa-home"></i></button>
     </div>
     <div class="col-md-2 pull-right">
-        <button type="button" class="btn btn-success">@Html.ActionLink("Submit Results", "SubmitResults?id=" + Model.ID)<i class="fa fa-home"></i></button>
+        <button type="button" class="btn btn-success">@Html.ActionLink("Submit Results", "SubmitResults", "Home", new { id = Model.ID }, null)<i class="fa fa-home"></i></button>
     </div>
 </div>
 

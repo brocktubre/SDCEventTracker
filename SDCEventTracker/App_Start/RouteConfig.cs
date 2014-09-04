@@ -19,6 +19,18 @@ namespace SDCEventTracker
                 defaults: new { controller = "Home", action = "Competitions"}
             );
 
+            routes.MapRoute(
+                name: "DefaultSubmitResults",
+                url: "{controller}/{action}/{id}",
+                defaults: new
+                {
+                    controller = "Home",
+                    action = "SubmitResults",
+                    id = UrlParameter.Optional
+                }
+
+                );
+
         }
     }
 }
