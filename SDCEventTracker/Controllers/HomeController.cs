@@ -91,6 +91,7 @@ namespace SDCEventTracker.Controllers
         }
 
         // HttpGet is used to show the Event Results: Place, Handler's Name, and Dog's Name.
+        // id passed in is equal to the Result.EventID
         [HttpGet]
         public ActionResult EventResults(int? id)
         {
@@ -112,7 +113,7 @@ namespace SDCEventTracker.Controllers
             return View(allResults.ToList());
         }
 
-        // User can sumbit results for past hunts
+        // User can submit results for completed hunts
         public ActionResult SubmitResults(int id)
         {
             ViewBag.Title = "Submit Results";
@@ -121,7 +122,8 @@ namespace SDCEventTracker.Controllers
             {
                 return HttpNotFound();
             }
-            objResult.EventID = @event.ID; // stores the id as EventID in Result
+            //Result thisResult = new Result();
+            //thisResult.EventID = @event.ID; // stores the id as EventID in Result
 
             //var q = (from i in db.Events select i.EventName).ToList(); ViewBag.EventNames = q;
             //q = (from i in db.Dogs select i.Name).ToList(); ViewBag.DogNames = q;
@@ -136,6 +138,28 @@ namespace SDCEventTracker.Controllers
             //ViewBag.HandlerNames = new SelectList(objResult.Handler.FirstName, "HandlerName", "HandlerName");
             //ViewBag.HandlerNames = new SelectList(objResult.Dog.Name, "DogName", "DogName");
             return View();
+        }
+
+        // HttpPost is used to submit hunting results and make's sure all fields are correct.
+        // Eventy Type, Place, Handler's Name/ID, Dog's Name/ID
+        [HttpPost]
+        public ActionResult SubmitResults([Bind(Include = "EventType,Place,HandlerID,DogID")] Result ResultsToSubmit, int id)
+        {
+            ViewBag.Title = "Submit Results";
+            // TODO must turn FirstName & LastName into HandlerID
+            // TODO must turn Name into DogID
+            ResultsToSubmit.EventID = id;
+            // if statement passes if Valid and state string has a value
+            if (ModelState.IsValid)
+            {
+                db.Results.Add(@ResultsToSubmit);
+                db.SaveChanges();
+                return RedirectToAction("SubmitResults", new { id = ResultsToSubmit.EventID});
+            }
+            else
+            {
+                return View(@ResultsToSubmit);
+            }
         }
 
     }
