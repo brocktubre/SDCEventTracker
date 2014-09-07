@@ -100,6 +100,7 @@ namespace SDCEventTracker.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            ViewBag.EventID = id;
             ViewBag.EventEnum1 = (from i in db.EventEnums where i.ID == 1 select i.EventType).First(); // "Morning Hunt"
             ViewBag.EventEnum2 = (from i in db.EventEnums where i.ID == 2 select i.EventType).First(); // "Evening Hunt"
             ViewBag.EventEnum3 = (from i in db.EventEnums where i.ID == 3 select i.EventType).First(); // "Barking Contest"
@@ -114,6 +115,7 @@ namespace SDCEventTracker.Controllers
         }
 
         // User can submit results for completed hunts
+        [HttpGet]
         public ActionResult SubmitResults(int id)
         {
             ViewBag.Title = "Submit Results";
@@ -122,6 +124,7 @@ namespace SDCEventTracker.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.EventID = id;
             //Result thisResult = new Result();
             //thisResult.EventID = @event.ID; // stores the id as EventID in Result
 
@@ -148,7 +151,7 @@ namespace SDCEventTracker.Controllers
             ViewBag.Title = "Submit Results";
             // TODO must turn FirstName & LastName into HandlerID
             // TODO must turn Name into DogID
-            ResultsToSubmit.EventID = id;
+            ResultsToSubmit.EventID = ViewBag.EventID = id;
             // if statement passes if Valid and state string has a value
             if (ModelState.IsValid)
             {

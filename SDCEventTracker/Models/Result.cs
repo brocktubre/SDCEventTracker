@@ -24,6 +24,7 @@ namespace SDCEventTracker.Models
         public int EventID { get; set; }
         [Display(Name = "Event Type")]
         public int EventType { get; set; }
+        [Required(ErrorMessage="Please specify a place.")]
         public Nullable<int> Place { get; set; }
         [Display(Name = "Handler's Name")]
         public int HandlerID { get; set; }
