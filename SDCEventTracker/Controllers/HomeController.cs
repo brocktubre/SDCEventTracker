@@ -12,8 +12,8 @@ namespace SDCEventTracker.Controllers
     public class HomeController : Controller
     {
         public SDC_databaseEntities db = new SDC_databaseEntities();
-        public Event objEvent = new Event();
-        public Result objResult = new Result();
+        //public Event objEvent = new Event();
+        //public Result objResult = new Result();
 
         // Competitions View produces all the Events, past and present
         public ActionResult Competitions()
@@ -49,7 +49,7 @@ namespace SDCEventTracker.Controllers
         [HttpGet]
         public ActionResult SubmitEvent()
         {
-            ViewBag.Title = "Submit New Hunt";
+            ViewBag.Title = "Submit Upcoming Hunt";
             return View();
         }
 
@@ -58,9 +58,12 @@ namespace SDCEventTracker.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult SubmitEvent([Bind(Include = "EventName,Date,Location,City,State,Zip,MorningHunt,EveningHunt,BenchShow,BarkingContest")] Event EventToCreate)
         {
-            ViewBag.Title = "Submit New Hunt";
+            ViewBag.Title = "Submit Upcoming Hunt";
             // if statement passes if Valid and state string has a value
-            if (ModelState.IsValid && EventToCreate.State != string.Empty)
+            if (EventToCreate.State == "0")
+                return View(@EventToCreate);
+
+            if (ModelState.IsValid)
             {
                 db.Events.Add(@EventToCreate);
                 db.SaveChanges();
@@ -100,17 +103,10 @@ namespace SDCEventTracker.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ViewBag.EventID = id;
-            ViewBag.EventEnum1 = (from i in db.EventEnums where i.ID == 1 select i.EventType).First(); // "Morning Hunt"
-            ViewBag.EventEnum2 = (from i in db.EventEnums where i.ID == 2 select i.EventType).First(); // "Evening Hunt"
-            ViewBag.EventEnum3 = (from i in db.EventEnums where i.ID == 3 select i.EventType).First(); // "Barking Contest"
-            ViewBag.EventEnum4 = (from i in db.EventEnums where i.ID == 4 select i.EventType).First(); // "Bench Show"
+
+            FillUpViewBag(id); // function fills up the view bag wiht all the event details
             var allResults = from i in db.Results orderby i.Place where i.EventID == id select i; // Selects all results
-
-            //AllResults rList = new AllResults();
-            //rList.MorningHuntData = from i in db.Results orderby i.Place where i.EventID == id && i.EventEnum.ID == 1 select i; // Selects the results for EventID == id and the Morning Hunt
-            //rList.EveningHuntData = from i in db.Results orderby i.Place where i.EventID == id && i.EventEnum.ID == 2 select i; // Selects the results for EventID == id and Evening Hunt
-
+            
             return View(allResults.ToList());
         }
 
@@ -125,21 +121,7 @@ namespace SDCEventTracker.Controllers
                 return HttpNotFound();
             }
             ViewBag.EventID = id;
-            //Result thisResult = new Result();
-            //thisResult.EventID = @event.ID; // stores the id as EventID in Result
 
-            //var q = (from i in db.Events select i.EventName).ToList(); ViewBag.EventNames = q;
-            //q = (from i in db.Dogs select i.Name).ToList(); ViewBag.DogNames = q;
-            //var q = (from i in db.EventEnums select i.EventType).ToList();
-            //List<SelectListItem> eventTypeList = new List<SelectListItem>();
-            //eventTypeList.AddRange((from i in db.EventEnums select i.EventType).ToList());
-            //ViewBag.EventTypes = eventTypeList;
-            //q = (from i in db.Handlers select i.FirstName).ToList(); ViewBag.HandlerName = q;
-            //var count = eventList.Count;
-            //ViewBag.EventNames = new SelectList(objEvent.EventName, "EventName", "EventName");
-            //ViewBag.EventTypes = new SelectList(objResult.EventEnum.EventType, "EventType", "EventType");
-            //ViewBag.HandlerNames = new SelectList(objResult.Handler.FirstName, "HandlerName", "HandlerName");
-            //ViewBag.HandlerNames = new SelectList(objResult.Dog.Name, "DogName", "DogName");
             return View();
         }
 
@@ -149,10 +131,10 @@ namespace SDCEventTracker.Controllers
         public ActionResult SubmitResults([Bind(Include = "EventType,Place,HandlerID,DogID")] Result ResultsToSubmit, int id)
         {
             ViewBag.Title = "Submit Results";
-            // TODO must turn FirstName & LastName into HandlerID
-            // TODO must turn Name into DogID
-            ResultsToSubmit.EventID = ViewBag.EventID = id;
-            // if statement passes if Valid and state string has a value
+            // TODO must turn typing in HandlerID into FirstName & LastName
+            // TODO must turn typing in DogID into Dog's Name
+            ViewBag.EventID = id;
+            ResultsToSubmit.EventID = id; // stores id passed in (Event.EventID)
             if (ModelState.IsValid)
             {
                 db.Results.Add(@ResultsToSubmit);
@@ -163,6 +145,21 @@ namespace SDCEventTracker.Controllers
             {
                 return View(@ResultsToSubmit);
             }
+        }
+
+        // function below stores important values in the ViewBag. Things like EventID, EventName, Location, etc..
+        public void FillUpViewBag(int? id)
+        {
+            ViewBag.EventID = id;
+            ViewBag.EventName = (from i in db.Events where i.ID == id select i.EventName).First(); // stores Event.EventName
+            ViewBag.Location = (from i in db.Events where i.ID == id select i.Location).First(); // stores Event.Loaction
+            ViewBag.City = (from i in db.Events where i.ID == id select i.City).First(); //stores Event.City
+            ViewBag.State = (from i in db.Events where i.ID == id select i.State).First(); //stores Event.State
+            ViewBag.Date = (from i in db.Events where i.ID == id select i.Date).First();
+            ViewBag.MorningHunt = (from i in db.Events where i.ID == id select i.MorningHunt).First(); // Finds out if there was or was not an Morning Hunt
+            ViewBag.EveningHunt = (from i in db.Events where i.ID == id select i.EveningHunt).First(); // Finds out if there was or was not an Evening Hunt
+            ViewBag.BarkingContest = (from i in db.Events where i.ID == id select i.BarkingContest).First(); // Finds out if there was or was not an Barking Contest
+            ViewBag.BenchShow = (from i in db.Events where i.ID == id select i.BenchShow).First(); // Finds out if there was or was not an Bench Show
         }
 
     }

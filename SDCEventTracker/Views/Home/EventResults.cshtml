@@ -1,9 +1,17 @@
 ﻿@model IEnumerable<SDCEventTracker.Models.Result>
 
 <h2>@ViewBag.Title</h2>
+<hr />
+<div class="col-md-12 text-center" style="text-transform: capitalize;">
+    <h2>@ViewBag.EventName</h2>
+</div>
+<h4 style="text-transform: capitalize;">Location: @ViewBag.Location - @ViewBag.City, @ViewBag.State </h4>
+<h4>Date: @ViewBag.Date</h4>
 
 <!-- Morning Hunt table results (1) -->
-<h3 class="text-info text-center">@ViewBag.EventEnum1</h3>
+<h3 class="text-info text-center">Monring Hunt</h3>
+@if(ViewBag.MorningHunt)
+{
 <table class="table">
     <tr class="top-row">
         <th>
@@ -15,7 +23,6 @@
         <th>
             @Html.DisplayNameFor(model => model.DogID)
         </th>
-        <th></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -30,16 +37,14 @@
         <td>
             @Html.DisplayFor(modelItem => item.Handler.LastName)'s @Html.DisplayFor(modelItem => item.Dog.Name)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
     </tr>
 }
 }
 </table>
+}
 <!-- Evening Hunt table results (2) -->
-<h3 class="text-info text-center">@ViewBag.EventEnum2</h3>
+@if (ViewBag.EveningHunt) { 
+<h3 class="text-info text-center">Evening Hunt</h3>
 <table class="table">
     <tr class="top-row">
         <th>
@@ -51,7 +56,6 @@
         <th>
             @Html.DisplayNameFor(model => model.DogID)
         </th>
-        <th></th>
     </tr>
     @foreach (var item in Model)
     {
@@ -67,16 +71,15 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Handler.LastName)'s @Html.DisplayFor(modelItem => item.Dog.Name)
                 </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-                </td>
             </tr>
         }
     }
 </table>
+}
+    @if(ViewBag.BarkingContest)
+{
 <!-- Barking Contest table results (3) -->
-<h3 class="text-info text-center">@ViewBag.EventEnum3</h3>
+<h3 class="text-info text-center">Barking Contest</h3>
 <table class="table">
     <tr class="top-row">
         <th>
@@ -88,7 +91,6 @@
         <th>
             @Html.DisplayNameFor(model => model.DogID)
         </th>
-        <th></th>
     </tr>
     @foreach (var item in Model)
     {
@@ -104,16 +106,15 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Handler.LastName)'s @Html.DisplayFor(modelItem => item.Dog.Name)
                 </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-                </td>
             </tr>
         }
     }
 </table>
+    }
+    @if(ViewBag.BenchShow)
+{
 <!-- Bench Show table results (4) -->
-<h3 class="text-info text-center">@ViewBag.EventEnum4</h3>
+<h3 class="text-info text-center">Bench Show</h3>
 <table class="table">
     <tr class="top-row">
         <th>
@@ -125,7 +126,6 @@
         <th>
             @Html.DisplayNameFor(model => model.DogID)
         </th>
-        <th></th>
     </tr>
     @foreach (var item in Model)
     {
@@ -141,14 +141,11 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Handler.LastName)'s @Html.DisplayFor(modelItem => item.Dog.Name)
                 </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-                </td>
             </tr>
         }
     }
 </table>
+    }
 
 <div class="col-md-2 pull-right">
     <button type="button" class="btn btn-default">@Html.ActionLink("Back to Competitions", "Competitions")<i class="fa fa-home"></i></button>

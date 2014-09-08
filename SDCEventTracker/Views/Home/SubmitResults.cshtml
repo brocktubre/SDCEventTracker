@@ -1,14 +1,13 @@
 ﻿@model SDCEventTracker.Models.Result
 
 <h2>@ViewBag.Title</h2>
-
+<hr />
+<div class="container">
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Result</h4>
-        <hr />
         @Html.ValidationSummary(true)
 
         <div class="form-group">
@@ -60,7 +59,4 @@
 <div class="col-md-2 pull-right">
     <button type="button" class="btn btn-success">@Html.ActionLink("View Results", "EventResults", new { id = ViewBag.EventID })<i class="fa fa-home"></i></button>
 </div>
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+    </div>

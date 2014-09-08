@@ -14,9 +14,9 @@
                         <span class="input-group-btn">
                             <button class="btn btn-success" type="submit" style="border-radius: 3px;"><i class="fa fa-search" style="padding: 0 10px; color: white; padding: 3px 0;"></i></button>
                         </span>
+                    </div>
+                </form>
             </div>
-            </form>
-        </div>
         </div>
     </div>
 
@@ -70,14 +70,15 @@
                         </td>
                         <td>
                             @{
-                                if (isPast)
-                                {
-                                    @Html.ActionLink("View Results", "EventResults", new { id = item.ID })
-                                }
-                                else
-                                {
-                                    @Html.ActionLink("View Details", "EventDetails", new { id = item.ID })
-                                }
+                    if (isPast)
+                    {   <span class="pull-right">
+                            @Html.ActionLink("View Results", "EventResults", new { id = item.ID }) <span>|</span> @Html.ActionLink("Submit Results", "SubmitResults", new { id = item.ID })
+                        </span>
+                    }
+                    else
+                    {
+                        @Html.ActionLink("View Details", "EventDetails", new { id = item.ID }, new { @class = "pull-right" })
+                    }
                             }
 
                         </td>
