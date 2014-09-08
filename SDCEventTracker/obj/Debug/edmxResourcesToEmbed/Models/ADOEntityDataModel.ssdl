@@ -23,6 +23,7 @@
     <Property Name="EveningHunt" Type="bit" />
     <Property Name="BenchShow" Type="bit" />
     <Property Name="BarkingContest" Type="bit" />
+    <Property Name="Details" Type="varchar" MaxLength="8000" />
   </EntityType>
   <EntityType Name="EventEnum">
     <Key>

@@ -15,7 +15,7 @@ using System.Web.WebPages.Html;
 
 namespace SDCEventTracker.Models
 {
-    
+
     public partial class Event
     {
         public Event()
@@ -28,7 +28,7 @@ namespace SDCEventTracker.Models
         [Required(ErrorMessage = "Please enter the event's name.")]
         public string EventName { get; set; }
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
-        [DateStart(ErrorMessage="Must be a future date")]
+        [DateStart(ErrorMessage = "Must be a future date")]
         [Required(ErrorMessage = "Please enter a date.")]
         public Nullable<System.DateTime> Date { get; set; }
         public string Location { get; set; }
@@ -36,7 +36,7 @@ namespace SDCEventTracker.Models
         public string City { get; set; }
         [Required(ErrorMessage = "Must select a state.")]
         public string State { get; set; }
-        [Required(ErrorMessage = "Zip is Required")]
+        [Required(ErrorMessage = "Zip is required.")]
         [RegularExpression(@"^\d{5}(-\d{4})?$", ErrorMessage = "Invalid Zip Code")]
         public Nullable<int> Zip { get; set; }
         [Display(Name = "Morning Hunt")]
@@ -47,6 +47,7 @@ namespace SDCEventTracker.Models
         public Nullable<bool> BenchShow { get; set; }
         [Display(Name = "Barking Contest")]
         public Nullable<bool> BarkingContest { get; set; }
+        public string Details { get; set; }
 
         public virtual ICollection<Result> Results { get; set; }
     }

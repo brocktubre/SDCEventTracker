@@ -9,7 +9,8 @@ CREATE TABLE Event(
 	MorningHunt bit DEFAULT(0),
 	EveningHunt bit DEFAULT(0),
 	BenchShow bit DEFAULT(0), 
-	BarkingContest bit DEFAULT(0)
+	BarkingContest bit DEFAULT(0),
+	Details VARCHAR(8000)
 
 )
 

@@ -65,7 +65,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/06/2014 01:50:42</publishTime>
     </File>
     <File Include="bin/SDCEventTracker.dll">
-      <publishTime>09/02/2014 12:23:56</publishTime>
+      <publishTime>09/08/2014 12:52:50</publishTime>
     </File>
     <File Include="bin/System.Net.Http.Formatting.dll">
       <publishTime>08/06/2014 01:50:30</publishTime>
@@ -308,7 +308,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/07/2014 00:46:02</publishTime>
     </File>
     <File Include="Controllers/HomeController.cs">
-      <publishTime>09/02/2014 12:17:32</publishTime>
+      <publishTime>09/08/2014 12:52:36</publishTime>
     </File>
     <File Include="favicon.ico">
       <publishTime>08/06/2014 01:50:16</publishTime>
@@ -328,8 +328,41 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Global.asax">
       <publishTime>08/06/2014 01:50:04</publishTime>
     </File>
+    <File Include="Models/ADOEntityDataModel.Context.cs">
+      <publishTime>09/08/2014 12:32:52</publishTime>
+    </File>
+    <File Include="Models/ADOEntityDataModel.Context.tt">
+      <publishTime>08/23/2014 21:51:33</publishTime>
+    </File>
+    <File Include="Models/ADOEntityDataModel.cs">
+      <publishTime>09/08/2014 12:32:57</publishTime>
+    </File>
+    <File Include="Models/ADOEntityDataModel.Designer.cs">
+      <publishTime>09/08/2014 12:32:57</publishTime>
+    </File>
+    <File Include="Models/ADOEntityDataModel.edmx">
+      <publishTime>09/08/2014 12:32:44</publishTime>
+    </File>
     <File Include="Models/ADOEntityDataModel.edmx.diagram">
       <publishTime>08/23/2014 22:38:24</publishTime>
+    </File>
+    <File Include="Models/ADOEntityDataModel.tt">
+      <publishTime>08/23/2014 21:51:33</publishTime>
+    </File>
+    <File Include="Models/Dog.cs">
+      <publishTime>08/23/2014 21:51:42</publishTime>
+    </File>
+    <File Include="Models/Event.cs">
+      <publishTime>09/08/2014 12:34:17</publishTime>
+    </File>
+    <File Include="Models/EventEnum.cs">
+      <publishTime>09/08/2014 12:32:57</publishTime>
+    </File>
+    <File Include="Models/Handler.cs">
+      <publishTime>08/23/2014 21:51:42</publishTime>
+    </File>
+    <File Include="Models/Result.cs">
+      <publishTime>09/08/2014 12:32:57</publishTime>
     </File>
     <File Include="packages.config">
       <publishTime>08/06/2014 01:50:17</publishTime>
@@ -407,16 +440,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/06/2014 01:50:07</publishTime>
     </File>
     <File Include="Views/Home/Competitions.cshtml">
-      <publishTime>09/01/2014 16:12:41</publishTime>
+      <publishTime>09/08/2014 12:07:22</publishTime>
     </File>
     <File Include="Views/Home/EventDetails.cshtml">
-      <publishTime>08/24/2014 12:47:03</publishTime>
+      <publishTime>09/08/2014 12:47:35</publishTime>
     </File>
     <File Include="Views/Home/EventResults.cshtml">
-      <publishTime>09/02/2014 12:20:51</publishTime>
+      <publishTime>09/08/2014 11:53:19</publishTime>
     </File>
     <File Include="Views/Home/SubmitEvent.cshtml">
-      <publishTime>08/21/2014 10:39:28</publishTime>
+      <publishTime>09/08/2014 12:58:03</publishTime>
+    </File>
+    <File Include="Views/Home/SubmitResults.cshtml">
+      <publishTime>09/08/2014 12:03:25</publishTime>
     </File>
     <File Include="Views/Shared/EditorTemplates/Boolean.cshtml">
       <publishTime>08/06/2014 01:50:07</publishTime>
@@ -425,7 +461,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/06/2014 01:50:08</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>08/24/2014 12:50:04</publishTime>
+      <publishTime>09/08/2014 12:07:20</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>08/06/2014 01:50:08</publishTime>

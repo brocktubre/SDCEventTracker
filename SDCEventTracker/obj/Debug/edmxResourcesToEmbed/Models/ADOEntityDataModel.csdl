@@ -26,6 +26,7 @@
     <Property Name="BenchShow" Type="Boolean" />
     <Property Name="BarkingContest" Type="Boolean" />
     <NavigationProperty Name="Results" Relationship="Self.FK__Result__EventID__6383C8BA" FromRole="Event" ToRole="Result" />
+    <Property Name="Details" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="EventEnum">
     <Key>

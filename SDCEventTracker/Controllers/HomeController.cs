@@ -49,16 +49,16 @@ namespace SDCEventTracker.Controllers
         [HttpGet]
         public ActionResult SubmitEvent()
         {
-            ViewBag.Title = "Submit Upcoming Hunt";
+            ViewBag.Title = "Post Upcoming Hunt";
             return View();
         }
 
         // HttpPost is used to submit upcoming hunt and make sure all fields are correct. 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult SubmitEvent([Bind(Include = "EventName,Date,Location,City,State,Zip,MorningHunt,EveningHunt,BenchShow,BarkingContest")] Event EventToCreate)
+        public ActionResult SubmitEvent([Bind(Include = "EventName,Date,Location,City,State,Zip,MorningHunt,EveningHunt,BenchShow,BarkingContest,Details")] Event EventToCreate)
         {
-            ViewBag.Title = "Submit Upcoming Hunt";
+            ViewBag.Title = "Post Upcoming Hunt";
             // if statement passes if Valid and state string has a value
             if (EventToCreate.State == "0")
                 return View(@EventToCreate);

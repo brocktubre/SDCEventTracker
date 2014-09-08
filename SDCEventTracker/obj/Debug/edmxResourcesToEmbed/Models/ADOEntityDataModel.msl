@@ -13,6 +13,7 @@
     <EntitySetMapping Name="Events">
       <EntityTypeMapping TypeName="SDC_databaseModel.Event">
         <MappingFragment StoreEntitySet="Event">
+          <ScalarProperty Name="Details" ColumnName="Details" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="EventName" ColumnName="EventName" />
           <ScalarProperty Name="Date" ColumnName="Date" />

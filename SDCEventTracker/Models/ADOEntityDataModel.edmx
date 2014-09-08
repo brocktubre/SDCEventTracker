@@ -28,6 +28,7 @@
           <Property Name="EveningHunt" Type="bit" />
           <Property Name="BenchShow" Type="bit" />
           <Property Name="BarkingContest" Type="bit" />
+          <Property Name="Details" Type="varchar" MaxLength="8000" />
         </EntityType>
         <EntityType Name="EventEnum">
           <Key>
@@ -172,6 +173,7 @@
           <Property Name="BenchShow" Type="Boolean" />
           <Property Name="BarkingContest" Type="Boolean" />
           <NavigationProperty Name="Results" Relationship="Self.FK__Result__EventID__6383C8BA" FromRole="Event" ToRole="Result" />
+          <Property Name="Details" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="EventEnum">
           <Key>
@@ -311,6 +313,7 @@
           <EntitySetMapping Name="Events">
             <EntityTypeMapping TypeName="SDC_databaseModel.Event">
               <MappingFragment StoreEntitySet="Event">
+                <ScalarProperty Name="Details" ColumnName="Details" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="EventName" ColumnName="EventName" />
                 <ScalarProperty Name="Date" ColumnName="Date" />

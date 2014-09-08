@@ -6,31 +6,21 @@
 //     Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Data.Entity;
-using System.Linq;
-using System.Web.Mvc;
-using System.Web.WebPages.Html;
 
 namespace SDCEventTracker.Models
 {
-
+    using System;
+    using System.Collections.Generic;
+    
     public partial class Result
     {
         public int ID { get; set; }
-        [Display(Name = "Event's Name")]
         public int EventID { get; set; }
-        [Display(Name = "Event Type")]
         public int EventType { get; set; }
-        [Required(ErrorMessage="Please specify a place.")]
         public Nullable<int> Place { get; set; }
-        [Display(Name = "Handler's Name")]
         public int HandlerID { get; set; }
-        [Display(Name = "Dog's Name")]
         public int DogID { get; set; }
-
+    
         public virtual Dog Dog { get; set; }
         public virtual Event Event { get; set; }
         public virtual Handler Handler { get; set; }
