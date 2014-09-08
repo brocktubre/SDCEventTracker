@@ -120,7 +120,7 @@ namespace SDCEventTracker.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.EventID = id;
+            FillUpViewBag(id);
 
             return View();
         }
@@ -133,7 +133,6 @@ namespace SDCEventTracker.Controllers
             ViewBag.Title = "Submit Results";
             // TODO must turn typing in HandlerID into FirstName & LastName
             // TODO must turn typing in DogID into Dog's Name
-            ViewBag.EventID = id;
             ResultsToSubmit.EventID = id; // stores id passed in (Event.EventID)
             if (ModelState.IsValid)
             {

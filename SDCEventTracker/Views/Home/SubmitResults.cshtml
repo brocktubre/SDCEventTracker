@@ -2,6 +2,12 @@
 
 <h2>@ViewBag.Title</h2>
 <hr />
+<div class="col-md-12 text-center" style="text-transform: capitalize;">
+    <h2>@ViewBag.EventName</h2>
+</div>
+<h4 style="text-transform: capitalize;">Location: @ViewBag.Location - @ViewBag.City, @ViewBag.State </h4>
+<h4>Date: @ViewBag.Date</h4>
+<br />
 <div class="container">
 @using (Html.BeginForm())
 {
@@ -22,7 +28,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Place, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Place)
+                @Html.TextBoxFor(model => model.Place, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Place)
             </div>
         </div>
@@ -30,7 +36,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.HandlerID, "HandlerID", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.HandlerID)
+                @Html.TextBoxFor(model => model.HandlerID, new { @class = "form-control" })
                 @*@Html.DropDownList("HandlerID", ViewBag.HandlerNames as SelectList)*@
                 @Html.ValidationMessageFor(model => model.HandlerID)
             </div>
@@ -40,7 +46,7 @@
             @Html.LabelFor(model => model.DogID, "DogID", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @*@Html.DropDownList("DogID", ViewBag.DogNames as SelectList)*@
-                @Html.EditorFor(model => model.DogID)
+                @Html.TextBoxFor(model => model.DogID, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.DogID)
             </div>
         </div>
